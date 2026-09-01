@@ -1,0 +1,172 @@
+@model MyDailyExpenseTracker.ViewModels.TransactionViewModel
+@{
+    bool isEdit   = Model.TransactionId > 0;
+    string action = isEdit ? "Edit" : "Create";
+    ViewData["Title"]     = isEdit ? "Edit Transaction" : "Add Transaction";
+    ViewData["PageTitle"] = isEdit ? "Edit Transaction" : "Add Transaction";
+}
+
+<div class="page-header">
+    <h1>
+        <i class="bi @(isEdit ? "bi-pencil-square" : "bi-plus-circle-fill") me-2"></i>
+        @ViewData["Title"]
+    </h1>
+    <a href="@Url.Action("Index")" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i>Back to Transactions
+    </a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body" style="padding:28px">
+                <form asp-action="@action" method="post" id="tx-form">
+                    @Html.AntiForgeryToken()
+                    @if (isEdit)
+                    {
+                        <input asp-for="TransactionId" type="hidden" />
+                    }
+
+                    <!-- Transaction Type Toggle -->
+                    <div class="mb-4">
+                        <label class="form-label">Transaction Type</label>
+                        <div class="d-flex gap-2">
+                            <input asp-for="Type" type="hidden" id="TypeHidden" />
+                            <button type="button" id="btn-expense"
+                                    onclick="setType('Expense')"
+                                    class="btn flex-grow-1 py-2 fw-600 @(Model.Type != "Income" ? "btn-expense" : "btn-outline-secondary")"
+                                    style="border-radius:var(--radius-md)">
+                                <i class="bi bi-arrow-down-circle-fill me-2"></i>Expense
+                            </button>
+                            <button type="button" id="btn-income"
+                                    onclick="setType('Income')"
+                                    class="btn flex-grow-1 py-2 fw-600 @(Model.Type == "Income" ? "btn-income" : "btn-outline-secondary")"
+                                    style="border-radius:var(--radius-md)">
+                                <i class="bi bi-arrow-up-circle-fill me-2"></i>Income
+                            </button>
+                        </div>
+                        <span asp-validation-for="Type" class="text-danger small"></span>
+                    </div>
+
+                    <div class="row g-3">
+                        <!-- Amount -->
+                        <div class="col-md-6">
+                            <label asp-for="Amount" class="form-label">Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text fw-700">₹</span>
+                                <input asp-for="Amount" type="number" step="0.01" min="0.01"
+                                       class="form-control" placeholder="0.00" id="Amount" />
+                            </div>
+                            <span asp-validation-for="Amount" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Date -->
+                        <div class="col-md-6">
+                            <label asp-for="TransactionDate" class="form-label">Date</label>
+                            <input asp-for="TransactionDate" type="date" class="form-control"
+                                   value="@Model.TransactionDate.ToString("yyyy-MM-dd")" />
+                            <span asp-validation-for="TransactionDate" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="col-md-6">
+                            <label asp-for="CategoryId" class="form-label">Category</label>
+                            <select asp-for="CategoryId" class="form-select" id="CategoryId">
+                                <option value="">Select Category</option>
+                                @foreach (var c in Model.Categories)
+                                {
+                                    if (c.Value == Model.CategoryId.ToString()) { <option value="@c.Value" selected>@c.Text</option> }
+                                    else                                         { <option value="@c.Value">@c.Text</option> }
+                                }
+                            </select>
+                            <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="col-md-6">
+                            <label asp-for="PaymentMethodId" class="form-label">Payment Method</label>
+                            <select asp-for="PaymentMethodId" class="form-select">
+                                <option value="">Select Method (Optional)</option>
+                                @foreach (var p in Model.PaymentMethods)
+                                {
+                                    if (p.Value == Model.PaymentMethodId?.ToString()) { <option value="@p.Value" selected>@p.Text</option> }
+                                    else                                              { <option value="@p.Value">@p.Text</option> }
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="col-12">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <input asp-for="Description" class="form-control" placeholder="e.g. Grocery shopping at DMart" maxlength="200" />
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="col-12">
+                            <label asp-for="Notes" class="form-label">Notes <span class="text-muted-custom fw-400">(optional)</span></label>
+                            <textarea asp-for="Notes" class="form-control" rows="3"
+                                      placeholder="Any extra details..." maxlength="500"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <button type="submit" class="btn btn-primary flex-grow-1 py-2 fw-600">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            @(isEdit ? "Update Transaction" : "Save Transaction")
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-outline-secondary px-4">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @if (isEdit)
+        {
+            <div class="card mt-3" style="border-color:var(--border-color)">
+                <div class="card-body py-3 px-4">
+                    <div class="row" style="font-size:12px;color:var(--text-muted)">
+                        <div class="col-6">Created: @Model.CreatedDate.ToString("dd MMM yyyy HH:mm")</div>
+                        <div class="col-6 text-end">Updated: @Model.UpdatedDate.ToString("dd MMM yyyy HH:mm")</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+    const typeHidden = document.getElementById('TypeHidden');
+
+    function setType(type) {
+        typeHidden.value = type;
+        const btnExp = document.getElementById('btn-expense');
+        const btnInc = document.getElementById('btn-income');
+
+        if (type === 'Expense') {
+            btnExp.className = 'btn flex-grow-1 py-2 fw-600 btn-expense';
+            btnInc.className = 'btn flex-grow-1 py-2 fw-600 btn-outline-secondary';
+        } else {
+            btnInc.className = 'btn flex-grow-1 py-2 fw-600 btn-income';
+            btnExp.className = 'btn flex-grow-1 py-2 fw-600 btn-outline-secondary';
+        }
+
+        // Reload categories for selected type via AJAX
+        fetch('/Transactions/GetCategoriesByType?type=' + type)
+            .then(r => r.json())
+            .then(data => {
+                const sel = document.getElementById('CategoryId');
+                const cur = sel.value;
+                sel.innerHTML = '<option value="">Select Category</option>';
+                data.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c.value;
+                    opt.text = c.text;
+                    if (c.value === cur) opt.selected = true;
+                    sel.appendChild(opt);
+                });
+            });
+    }
+    </script>
+}

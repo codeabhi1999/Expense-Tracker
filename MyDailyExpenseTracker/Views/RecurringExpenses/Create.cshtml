@@ -1,0 +1,108 @@
+@model MyDailyExpenseTracker.ViewModels.RecurringExpenseViewModel
+@{
+    bool isEdit = Model.RecurringExpenseId > 0;
+    ViewData["Title"]     = isEdit ? "Edit Recurring" : "Add Recurring Expense";
+    ViewData["PageTitle"] = ViewData["Title"]?.ToString();
+}
+
+<div class="page-header">
+    <h1><i class="bi bi-arrow-repeat me-2"></i>@ViewData["Title"]</h1>
+    <a href="@Url.Action("Index")" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left me-1"></i>Back</a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body" style="padding:28px">
+                <form asp-action="@(isEdit ? "Edit" : "Create")" method="post">
+                    @Html.AntiForgeryToken()
+                    @if (isEdit) { <input asp-for="RecurringExpenseId" type="hidden" /> }
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label asp-for="Name" class="form-label">Name</label>
+                            <input asp-for="Name" class="form-control" placeholder="e.g. Monthly Rent" maxlength="200" />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Type" class="form-label">Type</label>
+                            <select asp-for="Type" class="form-select">
+                                <option value="Expense">Expense</option>
+                                <option value="Income">Income</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Amount" class="form-label">Amount (₹)</label>
+                            <div class="input-group">
+                                <span class="input-group-text fw-700">₹</span>
+                                <input asp-for="Amount" type="number" step="0.01" min="0.01" class="form-control" placeholder="0.00" />
+                            </div>
+                            <span asp-validation-for="Amount" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Frequency" class="form-label">Frequency</label>
+                            <select asp-for="Frequency" class="form-select">
+                                <option value="Daily">Daily</option>
+                                <option value="Weekly">Weekly</option>
+                                <option value="Monthly" selected>Monthly</option>
+                                <option value="Yearly">Yearly</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="CategoryId" class="form-label">Category</label>
+                            <select asp-for="CategoryId" class="form-select">
+                                <option value="">Select Category</option>
+                                @foreach (var c in Model.Categories)
+                                {
+                                    if (c.Value == Model.CategoryId.ToString()) { <option value="@c.Value" selected>@c.Text</option> }
+                                    else                                         { <option value="@c.Value">@c.Text</option> }
+                                }
+                            </select>
+                            <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="PaymentMethodId" class="form-label">Payment Method</label>
+                            <select asp-for="PaymentMethodId" class="form-select">
+                                <option value="">Select Method</option>
+                                @foreach (var p in Model.PaymentMethods)
+                                {
+                                    if (p.Value == Model.PaymentMethodId?.ToString()) { <option value="@p.Value" selected>@p.Text</option> }
+                                    else                                              { <option value="@p.Value">@p.Text</option> }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="StartDate" class="form-label">Start Date</label>
+                            <input asp-for="StartDate" type="date" class="form-control" value="@Model.StartDate.ToString("yyyy-MM-dd")" />
+                            <span asp-validation-for="StartDate" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="EndDate" class="form-label">End Date <span class="text-muted-custom fw-400">(optional)</span></label>
+                            <input asp-for="EndDate" type="date" class="form-control" value="@Model.EndDate?.ToString("yyyy-MM-dd")" />
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="Notes" class="form-label">Notes <span class="text-muted-custom fw-400">(optional)</span></label>
+                            <textarea asp-for="Notes" class="form-control" rows="2" maxlength="500"></textarea>
+                        </div>
+                        @if (isEdit)
+                        {
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input asp-for="IsActive" class="form-check-input" type="checkbox" />
+                                    <label asp-for="IsActive" class="form-check-label">Active (will auto-generate transactions)</label>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <button type="submit" class="btn btn-primary flex-grow-1 py-2">
+                            <i class="bi bi-check-circle me-2"></i>@(isEdit ? "Update" : "Save") Recurring Expense
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-outline-secondary px-4">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

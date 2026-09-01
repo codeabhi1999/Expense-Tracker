@@ -1,0 +1,7 @@
+@model MyDailyExpenseTracker.ViewModels.TransactionViewModel
+@{
+    ViewData["Title"]     = "Edit Transaction";
+    ViewData["PageTitle"] = "Edit Transaction";
+}
+@* Reuse the Create view — same form works for both Create and Edit *@
+@await Html.PartialAsync("Create", Model)

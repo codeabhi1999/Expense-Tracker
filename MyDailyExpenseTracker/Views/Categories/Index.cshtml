@@ -1,0 +1,178 @@
+@model List<MyDailyExpenseTracker.ViewModels.CategoryViewModel>
+@{
+    ViewData["Title"]     = "Categories";
+    ViewData["PageTitle"] = "Categories";
+    var expenseCategories = Model.Where(c => c.Type == "Expense" || c.Type == "Both").ToList();
+    var incomeCategories  = Model.Where(c => c.Type == "Income").ToList();
+}
+
+<div class="page-header">
+    <h1><i class="bi bi-tag-fill me-2"></i>Categories</h1>
+    <a href="@Url.Action("Create")" class="btn btn-primary btn-sm">
+        <i class="bi bi-plus-lg me-1"></i>Add Category
+    </a>
+</div>
+
+<div class="row g-4">
+    <!-- Expense Categories -->
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="bi bi-arrow-down-circle text-danger me-2"></i>Expense Categories</h2>
+                <span class="badge" style="background:rgba(239,68,68,.12);color:var(--color-expense)">@expenseCategories.Count</span>
+            </div>
+            <div class="card-body p-0">
+                @if (expenseCategories.Any())
+                {
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Category</th><th>Transactions</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var cat in expenseCategories)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div style="width:32px;height:32px;border-radius:8px;background:@(cat.Color ?? "#6366F1")22;display:flex;align-items:center;justify-content:center;color:@(cat.Color ?? "#6366F1");font-size:15px">
+                                                <i class="@(cat.Icon ?? "bi-tag")"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-600" style="font-size:13.5px">@cat.Name</div>
+                                                @if (cat.IsDefault)
+                                                {
+                                                    <span class="badge" style="font-size:9px;background:rgba(99,102,241,.1);color:var(--accent-primary);font-weight:600">Default</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-muted-custom">@cat.TransactionCount txns</td>
+                                    <td>
+                                        @if (!cat.IsDefault)
+                                        {
+                                            <div class="d-flex gap-1">
+                                                <a href="@Url.Action("Edit", new { id = cat.CategoryId })"
+                                                   class="btn btn-sm" style="background:rgba(59,130,246,.1);color:#3B82F6;border:none;">
+                                                    <i class="bi bi-pencil"></i>
+                                                </a>
+                                                @if (cat.TransactionCount == 0)
+                                                {
+                                                    <button type="button" class="btn btn-sm"
+                                                            style="background:rgba(239,68,68,.1);color:#EF4444;border:none;"
+                                                            data-delete-form="del-cat-@cat.CategoryId"
+                                                            data-delete-label="@cat.Name">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                    <form id="del-cat-@cat.CategoryId" method="post"
+                                                          asp-action="Delete" asp-route-id="@cat.CategoryId">
+                                                        @Html.AntiForgeryToken()
+                                                    </form>
+                                                }
+                                                else
+                                                {
+                                                    <span title="In use — cannot delete" class="btn btn-sm disabled"
+                                                          style="background:rgba(148,163,184,.1);color:var(--text-muted);border:none;">
+                                                        <i class="bi bi-lock"></i>
+                                                    </span>
+                                                }
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted-custom" style="font-size:12px">System</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="empty-state py-4"><p>No expense categories yet.</p></div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Income Categories -->
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><i class="bi bi-arrow-up-circle text-success me-2"></i>Income Categories</h2>
+                <span class="badge" style="background:rgba(34,197,94,.12);color:var(--color-income)">@incomeCategories.Count</span>
+            </div>
+            <div class="card-body p-0">
+                @if (incomeCategories.Any())
+                {
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Category</th><th>Transactions</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var cat in incomeCategories)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div style="width:32px;height:32px;border-radius:8px;background:@(cat.Color ?? "#22C55E")22;display:flex;align-items:center;justify-content:center;color:@(cat.Color ?? "#22C55E");font-size:15px">
+                                                <i class="@(cat.Icon ?? "bi-tag")"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-600" style="font-size:13.5px">@cat.Name</div>
+                                                @if (cat.IsDefault)
+                                                {
+                                                    <span class="badge" style="font-size:9px;background:rgba(99,102,241,.1);color:var(--accent-primary);font-weight:600">Default</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-muted-custom">@cat.TransactionCount txns</td>
+                                    <td>
+                                        @if (!cat.IsDefault)
+                                        {
+                                            <div class="d-flex gap-1">
+                                                <a href="@Url.Action("Edit", new { id = cat.CategoryId })"
+                                                   class="btn btn-sm" style="background:rgba(59,130,246,.1);color:#3B82F6;border:none;">
+                                                    <i class="bi bi-pencil"></i>
+                                                </a>
+                                                @if (cat.TransactionCount == 0)
+                                                {
+                                                    <button type="button" class="btn btn-sm"
+                                                            style="background:rgba(239,68,68,.1);color:#EF4444;border:none;"
+                                                            data-delete-form="del-cat-@cat.CategoryId"
+                                                            data-delete-label="@cat.Name">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                    <form id="del-cat-@cat.CategoryId" method="post"
+                                                          asp-action="Delete" asp-route-id="@cat.CategoryId">
+                                                        @Html.AntiForgeryToken()
+                                                    </form>
+                                                }
+                                                else
+                                                {
+                                                    <span title="In use" class="btn btn-sm disabled"
+                                                          style="background:rgba(148,163,184,.1);color:var(--text-muted);border:none;">
+                                                        <i class="bi bi-lock"></i>
+                                                    </span>
+                                                }
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted-custom" style="font-size:12px">System</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="empty-state py-4"><p>No income categories yet.</p></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

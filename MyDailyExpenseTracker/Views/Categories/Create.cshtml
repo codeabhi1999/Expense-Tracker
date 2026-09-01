@@ -1,0 +1,81 @@
+@model MyDailyExpenseTracker.ViewModels.CategoryViewModel
+@{
+    bool isEdit = Model.CategoryId > 0;
+    ViewData["Title"]     = isEdit ? "Edit Category" : "Add Category";
+    ViewData["PageTitle"] = isEdit ? "Edit Category" : "Add Category";
+}
+
+<div class="page-header">
+    <h1><i class="bi bi-tag-fill me-2"></i>@ViewData["Title"]</h1>
+    <a href="@Url.Action("Index")" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i>Back
+    </a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body" style="padding:28px">
+                <form asp-action="@(isEdit ? "Edit" : "Create")" method="post">
+                    @Html.AntiForgeryToken()
+                    @if (isEdit) { <input asp-for="CategoryId" type="hidden" /> }
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Category Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="e.g. Food, Rent, Salary" maxlength="100" />
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Type" class="form-label">Category Type</label>
+                        <select asp-for="Type" class="form-select">
+                            <option value="Expense">Expense</option>
+                            <option value="Income">Income</option>
+                            <option value="Both">Both (Expense &amp; Income)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Icon" class="form-label">
+                            Icon <span class="text-muted-custom fw-400">(Bootstrap Icons class)</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="icon-preview"><i class="bi bi-tag"></i></span>
+                            <input asp-for="Icon" class="form-control" placeholder="e.g. bi-cup-hot" id="icon-input" />
+                        </div>
+                        <div class="mt-1" style="font-size:11px;color:var(--text-muted)">
+                            Browse icons at <a href="https://icons.getbootstrap.com" target="_blank">icons.getbootstrap.com</a>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Color" class="form-label">Color</label>
+                        <div class="d-flex gap-2 align-items-center">
+                            <input asp-for="Color" type="color" class="form-control form-control-color"
+                                   value="@(Model.Color ?? "#6366F1")" style="width:50px;height:40px;padding:2px" />
+                            <input asp-for="Color" type="text" class="form-control" id="color-text"
+                                   placeholder="#6366F1" maxlength="7" value="@Model.Color" />
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <button type="submit" class="btn btn-primary flex-grow-1 py-2">
+                            <i class="bi bi-check-circle me-2"></i>@(isEdit ? "Update" : "Create") Category
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-outline-secondary px-4">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+    // Live icon preview
+    document.getElementById('icon-input')?.addEventListener('input', function() {
+        const preview = document.getElementById('icon-preview').querySelector('i');
+        preview.className = 'bi ' + this.value;
+    });
+    </script>
+}

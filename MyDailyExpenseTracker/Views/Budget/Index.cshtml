@@ -1,0 +1,165 @@
+@model MyDailyExpenseTracker.ViewModels.BudgetViewModel
+@{
+    ViewData["Title"]     = "Monthly Budget";
+    ViewData["PageTitle"] = "Monthly Budget";
+    var monthName = new DateTime(Model.Year, Model.Month, 1).ToString("MMMM yyyy");
+}
+
+<div class="page-header">
+    <h1><i class="bi bi-pie-chart-fill me-2"></i>Budget — @monthName</h1>
+    <!-- Month/Year picker -->
+    <form method="get" asp-action="Index" class="d-flex gap-2 align-items-center">
+        <select name="month" class="form-select form-select-sm" style="width:130px">
+            @foreach (var m in Model.Months)
+            {
+                if (m.Selected) { <option value="@m.Value" selected>@m.Text</option> }
+                else            { <option value="@m.Value">@m.Text</option> }
+            }
+        </select>
+        <select name="year" class="form-select form-select-sm" style="width:90px">
+            @foreach (var y in Model.Years)
+            {
+                if (y.Selected) { <option value="@y.Value" selected>@y.Text</option> }
+                else            { <option value="@y.Value">@y.Text</option> }
+            }
+        </select>
+        <button type="submit" class="btn btn-outline-secondary btn-sm">Go</button>
+    </form>
+</div>
+
+<!-- Budget Alerts -->
+@if (Model.BudgetId > 0)
+{
+    @if (Model.IsExceeded)
+    {
+        <div class="alert alert-danger mb-4 d-flex align-items-center gap-2">
+            <i class="bi bi-exclamation-octagon-fill fs-5"></i>
+            <div><strong>🚨 Budget Exceeded!</strong> You've spent ₹@Model.TotalSpent.ToString("N2") of ₹@Model.TotalBudget.ToString("N2") (@Model.UsedPercentage%)</div>
+        </div>
+    }
+    else if (Model.IsWarning)
+    {
+        <div class="alert alert-warning mb-4 d-flex align-items-center gap-2">
+            <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+            <div><strong>⚠️ Warning!</strong> You've used @Model.UsedPercentage% of your budget. ₹@Model.RemainingBudget.ToString("N2") remaining.</div>
+        </div>
+    }
+    else if (Model.TotalBudget > 0)
+    {
+        <div class="alert alert-success mb-4 d-flex align-items-center gap-2">
+            <i class="bi bi-check-circle-fill fs-5"></i>
+            <div>✅ Budget healthy! ₹@Model.RemainingBudget.ToString("N2") remaining (@(100 - Model.UsedPercentage)% left).</div>
+        </div>
+    }
+}
+
+<form asp-action="Save" method="post">
+    @Html.AntiForgeryToken()
+    <input asp-for="Month" type="hidden" />
+    <input asp-for="Year"  type="hidden" />
+    @if (Model.BudgetId > 0) { <input asp-for="BudgetId" type="hidden" /> }
+
+    <div class="row g-4">
+        <!-- Total Budget Card -->
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <div class="card-header"><h2 class="card-title">Total Monthly Budget</h2></div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label asp-for="TotalBudget" class="form-label">Budget Amount (₹)</label>
+                        <div class="input-group">
+                            <span class="input-group-text fw-700">₹</span>
+                            <input asp-for="TotalBudget" type="number" step="0.01" min="1" class="form-control"
+                                   placeholder="e.g. 30000" style="font-size:18px;font-weight:700" />
+                        </div>
+                        <span asp-validation-for="TotalBudget" class="text-danger small"></span>
+                    </div>
+
+                    @if (Model.BudgetId > 0 && Model.TotalBudget > 0)
+                    {
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2" style="font-size:13px">
+                                <span>Spent: ₹@Model.TotalSpent.ToString("N2")</span>
+                                <span class="fw-700 @(Model.IsExceeded ? "text-expense" : Model.IsWarning ? "text-warning" : "text-income")">
+                                    @Model.UsedPercentage%
+                                </span>
+                            </div>
+                            <div class="progress" style="height:12px">
+                                <div class="progress-bar @(Model.IsExceeded ? "bg-danger" : Model.IsWarning ? "bg-warning" : "bg-success")"
+                                     style="width:@Math.Min(Model.UsedPercentage, 100)%"></div>
+                            </div>
+                            <div class="mt-1" style="font-size:12px;color:var(--text-muted)">
+                                ₹@Model.RemainingBudget.ToString("N2") remaining
+                            </div>
+                        </div>
+                    }
+
+                    <div class="mb-3">
+                        <label asp-for="Notes" class="form-label">Notes (optional)</label>
+                        <textarea asp-for="Notes" class="form-control" rows="2" placeholder="Budget notes..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2">
+                        <i class="bi bi-check-circle me-2"></i>Save Budget
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Budgets -->
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Category-wise Budgets</h2>
+                    <span style="font-size:12px;color:var(--text-muted)">Set ₹0 to skip a category</span>
+                </div>
+                <div class="card-body p-0">
+                    @for (int i = 0; i < Model.CategoryBudgets.Count; i++)
+                    {
+                        var cb = Model.CategoryBudgets[i];
+                        <input type="hidden" name="CategoryBudgets[@i].BudgetCategoryId" value="@cb.BudgetCategoryId" />
+                        <input type="hidden" name="CategoryBudgets[@i].CategoryId" value="@cb.CategoryId" />
+                        <input type="hidden" name="CategoryBudgets[@i].CategoryName" value="@cb.CategoryName" />
+                        <input type="hidden" name="CategoryBudgets[@i].CategoryIcon" value="@cb.CategoryIcon" />
+                        <input type="hidden" name="CategoryBudgets[@i].CategoryColor" value="@cb.CategoryColor" />
+
+                        <div class="budget-card">
+                            <div class="d-flex align-items-center gap-3">
+                                <div style="width:36px;height:36px;border-radius:8px;background:@(cb.CategoryColor ?? "#6366F1")22;display:flex;align-items:center;justify-content:center;color:@(cb.CategoryColor ?? "#6366F1");font-size:15px;flex-shrink:0">
+                                    <i class="@(cb.CategoryIcon ?? "bi-tag")"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="fw-600 mb-1" style="font-size:13px">@cb.CategoryName</div>
+                                    @if (cb.BudgetAmount > 0)
+                                    {
+                                        <div class="progress" style="height:5px;margin-bottom:4px">
+                                            <div class="progress-bar @(cb.IsExceeded ? "bg-danger" : cb.IsWarning ? "bg-warning" : "bg-success")"
+                                                 style="width:@Math.Min(cb.UsedPercentage, 100)%"></div>
+                                        </div>
+                                        <div style="font-size:11px;color:var(--text-muted)">
+                                            ₹@cb.SpentAmount.ToString("N2") of ₹@cb.BudgetAmount.ToString("N2") spent
+                                            @if (cb.IsExceeded) { <span class="text-danger fw-600"> 🚨 Exceeded!</span> }
+                                            else if (cb.IsWarning) { <span class="text-warning fw-600"> ⚠️ @cb.UsedPercentage%</span> }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div style="font-size:11px;color:var(--text-muted)">No budget set</div>
+                                    }
+                                </div>
+                                <div style="width:130px;flex-shrink:0">
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-text">₹</span>
+                                        <input type="number" name="CategoryBudgets[@i].BudgetAmount"
+                                               value="@cb.BudgetAmount" min="0" step="0.01"
+                                               class="form-control" placeholder="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

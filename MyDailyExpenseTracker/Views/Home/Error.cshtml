@@ -1,0 +1,27 @@
+@model MyDailyExpenseTracker.Models.ErrorViewModel
+@{
+    ViewData["Title"]     = "Error";
+    ViewData["PageTitle"] = "Oops! Something went wrong";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-lg-6 text-center">
+        <div style="font-size:80px;font-weight:800;color:var(--color-expense);line-height:1">500</div>
+        <h1 class="mt-3 mb-2" style="font-size:24px;font-weight:700">Something went wrong</h1>
+        <p style="color:var(--text-muted)">An unexpected error occurred. Please try again later.</p>
+        @if (Model.ShowRequestId)
+        {
+            <p class="mt-3" style="font-size:12px;color:var(--text-muted)">
+                Request ID: <code>@Model.RequestId</code>
+            </p>
+        }
+        <div class="mt-4 d-flex gap-3 justify-content-center">
+            <a href="@Url.Action("Index","Dashboard")" class="btn btn-primary">
+                <i class="bi bi-house me-2"></i>Go to Dashboard
+            </a>
+            <button onclick="history.back()" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-2"></i>Go Back
+            </button>
+        </div>
+    </div>
+</div>

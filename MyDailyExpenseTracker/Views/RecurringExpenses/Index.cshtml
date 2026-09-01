@@ -1,0 +1,113 @@
+@model List<MyDailyExpenseTracker.ViewModels.RecurringExpenseViewModel>
+@{
+    ViewData["Title"]     = "Recurring Expenses";
+    ViewData["PageTitle"] = "Recurring Expenses";
+}
+
+<div class="page-header">
+    <h1><i class="bi bi-arrow-repeat me-2"></i>Recurring Expenses</h1>
+    <a href="@Url.Action("Create")" class="btn btn-primary btn-sm">
+        <i class="bi bi-plus-lg me-1"></i>Add Recurring
+    </a>
+</div>
+
+@if (Model.Any())
+{
+    <div class="card">
+        <div class="card-body p-0">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th><th>Amount</th><th>Type</th><th>Category</th>
+                        <th>Frequency</th><th>Next Due</th><th>Status</th><th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var re in Model)
+                    {
+                        // Calculate next due date for display
+                        DateTime? nextDate = null;
+                        if (re.IsActive)
+                        {
+                            var last = re.LastGeneratedDate ?? re.StartDate.AddDays(-1);
+                            nextDate = re.Frequency switch
+                            {
+                                "Daily"   => last.AddDays(1),
+                                "Weekly"  => last.AddDays(7),
+                                "Monthly" => last.AddMonths(1),
+                                "Yearly"  => last.AddYears(1),
+                                _         => (DateTime?)null
+                            };
+                        }
+
+                        <tr>
+                            <td class="fw-600">@re.Name</td>
+                            <td class="@(re.Type == "Expense" ? "amount-expense" : "amount-income") fw-700">
+                                ₹@re.Amount.ToString("N2")
+                            </td>
+                            <td><span class="type-badge @re.Type.ToLower()">@re.Type</span></td>
+                            <td><span class="category-pill">@re.CategoryName</span></td>
+                            <td class="text-muted-custom">
+                                <span class="badge" style="background:rgba(99,102,241,.1);color:var(--accent-primary);font-weight:600">
+                                    @re.Frequency
+                                </span>
+                            </td>
+                            <td class="no-wrap" style="font-size:13px">
+                                @if (nextDate.HasValue)
+                                {
+                                    <span class="@(nextDate.Value.Date <= DateTime.Today ? "text-expense fw-600" : "")">
+                                        @nextDate.Value.ToString("dd MMM yyyy")
+                                        @if (nextDate.Value.Date <= DateTime.Today)
+                                        {
+                                            <i class="bi bi-exclamation-circle ms-1" title="Due today or overdue"></i>
+                                        }
+                                    </span>
+                                }
+                                else { <span class="text-muted-custom">—</span> }
+                            </td>
+                            <td>
+                                @if (re.IsActive)
+                                {
+                                    <span class="badge bg-success" style="font-size:11px">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary" style="font-size:11px">Paused</span>
+                                }
+                            </td>
+                            <td>
+                                <div class="d-flex gap-1">
+                                    <a href="@Url.Action("Edit", new { id = re.RecurringExpenseId })"
+                                       class="btn btn-sm" style="background:rgba(59,130,246,.1);color:#3B82F6;border:none;">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-sm"
+                                            style="background:rgba(239,68,68,.1);color:#EF4444;border:none;"
+                                            data-delete-form="del-re-@re.RecurringExpenseId"
+                                            data-delete-label="@re.Name">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                    <form id="del-re-@re.RecurringExpenseId" method="post"
+                                          asp-action="Delete" asp-route-id="@re.RecurringExpenseId">
+                                        @Html.AntiForgeryToken()
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="empty-state card" style="padding:60px 20px">
+        <div class="empty-icon"><i class="bi bi-arrow-repeat"></i></div>
+        <h5>No Recurring Expenses</h5>
+        <p>Set up recurring expenses like rent, Netflix, EMI, etc. and they'll be auto-generated on schedule.</p>
+        <a href="@Url.Action("Create")" class="btn btn-primary">
+            <i class="bi bi-plus-lg me-1"></i>Add First Recurring Expense
+        </a>
+    </div>
+}

@@ -1,0 +1,299 @@
+@model MyDailyExpenseTracker.ViewModels.TransactionFilterViewModel
+@{
+    ViewData["Title"] = "Transactions";
+    ViewData["PageTitle"] = "Transactions";
+}
+
+<div class="page-header">
+    <h1><i class="bi bi-arrow-left-right me-2"></i>Transactions</h1>
+    <div class="d-flex gap-2 flex-wrap">
+        <a href="@Url.Action("Create", new { type="Expense" })" class="btn btn-expense btn-sm">
+            <i class="bi bi-dash-circle-fill me-1"></i>Add Expense
+        </a>
+        <a href="@Url.Action("Create", new { type="Income" })" class="btn btn-income btn-sm">
+            <i class="bi bi-plus-circle-fill me-1"></i>Add Income
+        </a>
+        <div class="dropdown">
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="bi bi-download me-1"></i>Export
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="@Url.Action("Export", new { format="csv", Model.FromDate, Model.ToDate, Model.CategoryId, Model.PaymentMethodId, Model.Type })">
+                    <i class="bi bi-filetype-csv me-2"></i>Export CSV</a></li>
+                <li><a class="dropdown-item" href="@Url.Action("Export", new { format="excel", Model.FromDate, Model.ToDate, Model.CategoryId, Model.PaymentMethodId, Model.Type })">
+                    <i class="bi bi-file-earmark-excel me-2"></i>Export Excel</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Filter Card -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h2 class="card-title"><i class="bi bi-funnel me-2"></i>Filters</h2>
+        <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#filterPanel">
+            <i class="bi bi-chevron-down"></i>
+        </button>
+    </div>
+    <div class="collapse show" id="filterPanel">
+        <div class="card-body">
+            <form method="get" asp-action="Index" id="filter-form">
+                <div class="row g-3">
+                    <div class="col-md-6 col-lg-3">
+                        <label class="form-label">From Date</label>
+                        <input type="date" name="FromDate" class="form-control"
+                               value="@Model.FromDate?.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <label class="form-label">To Date</label>
+                        <input type="date" name="ToDate" class="form-control"
+                               value="@Model.ToDate?.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <label class="form-label">Category</label>
+                        <select name="CategoryId" class="form-select">
+                            <option value="">All Categories</option>
+                            @foreach (var c in Model.Categories)
+                            {
+                                if (Model.CategoryId?.ToString() == c.Value) { <option value="@c.Value" selected>@c.Text</option> }
+                                else                                         { <option value="@c.Value">@c.Text</option> }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <label class="form-label">Payment Method</label>
+                        <select name="PaymentMethodId" class="form-select">
+                            <option value="">All Methods</option>
+                            @foreach (var p in Model.PaymentMethods)
+                            {
+                                if (Model.PaymentMethodId?.ToString() == p.Value) { <option value="@p.Value" selected>@p.Text</option> }
+                                else                                              { <option value="@p.Value">@p.Text</option> }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <label class="form-label">Type</label>
+                        <select name="Type" class="form-select">
+                            <option value="">All Types</option>
+                            @if (Model.Type == "Expense") { <option value="Expense" selected>Expense</option> }
+                            else                          { <option value="Expense">Expense</option> }
+                            @if (Model.Type == "Income")  { <option value="Income" selected>Income</option> }
+                            else                          { <option value="Income">Income</option> }
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <label class="form-label">Min Amount (₹)</label>
+                        <input type="number" name="MinAmount" class="form-control" step="0.01" min="0"
+                               value="@Model.MinAmount" placeholder="0.00" />
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <label class="form-label">Max Amount (₹)</label>
+                        <input type="number" name="MaxAmount" class="form-control" step="0.01" min="0"
+                               value="@Model.MaxAmount" placeholder="Any" />
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label">Search</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" name="SearchText" class="form-control"
+                                   value="@Model.SearchText" placeholder="Search description or notes..." />
+                        </div>
+                    </div>
+                    <div class="col-lg-2 d-flex align-items-end gap-2">
+                        <button type="submit" class="btn btn-primary flex-grow-1">
+                            <i class="bi bi-funnel-fill me-1"></i>Apply
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                <input type="hidden" name="Page" value="1" />
+                <input type="hidden" name="PageSize" value="@Model.PageSize" />
+                <input type="hidden" name="SortBy" value="@Model.SortBy" />
+                <input type="hidden" name="SortOrder" value="@Model.SortOrder" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Summary Row -->
+@if (Model.TotalCount > 0)
+{
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card p-3 d-flex flex-row align-items-center gap-3">
+                <div style="width:42px;height:42px;border-radius:10px;background:rgba(239,68,68,.1);display:flex;align-items:center;justify-content:center;color:var(--color-expense);font-size:20px">
+                    <i class="bi bi-arrow-down-circle-fill"></i>
+                </div>
+                <div>
+                    <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Total Expense</div>
+                    <div class="fw-800 amount-expense" style="font-size:18px">₹@Model.FilteredTotalExpense.ToString("N2")</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 d-flex flex-row align-items-center gap-3">
+                <div style="width:42px;height:42px;border-radius:10px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;color:var(--color-income);font-size:20px">
+                    <i class="bi bi-arrow-up-circle-fill"></i>
+                </div>
+                <div>
+                    <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Total Income</div>
+                    <div class="fw-800 amount-income" style="font-size:18px">₹@Model.FilteredTotalIncome.ToString("N2")</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 d-flex flex-row align-items-center gap-3">
+                <div style="width:42px;height:42px;border-radius:10px;background:rgba(59,130,246,.1);display:flex;align-items:center;justify-content:center;color:var(--color-balance);font-size:20px">
+                    <i class="bi bi-wallet2"></i>
+                </div>
+                <div>
+                    <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Net Balance</div>
+                    <div class="fw-800 @(Model.FilteredBalance >= 0 ? "amount-income" : "amount-expense")" style="font-size:18px">
+                        ₹@Math.Abs(Model.FilteredBalance).ToString("N2")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Transactions Table -->
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">
+            @Model.TotalCount Transaction@(Model.TotalCount != 1 ? "s" : "")
+        </h2>
+        <div class="d-flex align-items-center gap-2">
+            <span style="font-size:12px;color:var(--text-muted)">
+                Page @Model.Page of @Model.TotalPages
+            </span>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        @if (Model.Transactions.Any())
+        {
+            <div class="table-wrapper">
+                <table class="data-table" aria-label="Transactions table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a href="?@(new Microsoft.AspNetCore.Http.QueryString($"?SortBy=Date&SortOrder={( Model.SortBy=="Date" && Model.SortOrder=="asc" ? "desc" : "asc")}&FromDate={Model.FromDate:yyyy-MM-dd}&ToDate={Model.ToDate:yyyy-MM-dd}&CategoryId={Model.CategoryId}&PaymentMethodId={Model.PaymentMethodId}&Type={Model.Type}&SearchText={Model.SearchText}").Value?.TrimStart('?'))"
+                                   class="text-muted-custom text-decoration-none">
+                                    Date <i class="bi bi-arrow-down-up"></i>
+                                </a>
+                            </th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>
+                                <a href="?SortBy=Amount&SortOrder=@(Model.SortBy=="Amount" && Model.SortOrder=="asc" ? "desc" : "asc")&FromDate=@Model.FromDate?.ToString("yyyy-MM-dd")&ToDate=@Model.ToDate?.ToString("yyyy-MM-dd")&CategoryId=@Model.CategoryId&Type=@Model.Type"
+                                   class="text-muted-custom text-decoration-none">
+                                    Amount <i class="bi bi-arrow-down-up"></i>
+                                </a>
+                            </th>
+                            <th>Payment</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var tx in Model.Transactions)
+                        {
+                            <tr>
+                                <td class="no-wrap">@tx.TransactionDate.ToString("dd MMM yyyy")</td>
+                                <td>
+                                    <div class="fw-500">@tx.Description</div>
+                                </td>
+                                <td>
+                                    <span class="category-pill">
+                                        @if (!string.IsNullOrEmpty(tx.CategoryIcon))
+                                        {
+                                            <i class="@tx.CategoryIcon" style="color:@tx.CategoryColor"></i>
+                                        }
+                                        @tx.CategoryName
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="type-badge @tx.Type.ToLower()">
+                                        <i class="bi @(tx.Type == "Expense" ? "bi-arrow-down" : "bi-arrow-up")"></i>
+                                        @tx.Type
+                                    </span>
+                                </td>
+                                <td class="@(tx.Type == "Expense" ? "amount-expense" : "amount-income") no-wrap">
+                                    @(tx.Type == "Expense" ? "−" : "+")₹@tx.Amount.ToString("N2")
+                                </td>
+                                <td class="text-muted-custom">@(tx.PaymentMethodName ?? "—")</td>
+                                <td>
+                                    <div class="d-flex gap-1">
+                                        <a href="@Url.Action("Details", new { id=tx.TransactionId })"
+                                           class="btn btn-sm" style="background:rgba(99,102,241,.1);color:var(--accent-primary);border:none;" title="View">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="@Url.Action("Edit", new { id=tx.TransactionId })"
+                                           class="btn btn-sm" style="background:rgba(59,130,246,.1);color:#3B82F6;border:none;" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-sm"
+                                                style="background:rgba(239,68,68,.1);color:#EF4444;border:none;" title="Delete"
+                                                data-delete-form="del-@tx.TransactionId"
+                                                data-delete-label="@tx.Description">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                        <form id="del-@tx.TransactionId" method="post"
+                                              asp-action="Delete" asp-route-id="@tx.TransactionId">
+                                            @Html.AntiForgeryToken()
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            @if (Model.TotalPages > 1)
+            {
+                <div class="d-flex justify-content-center p-4">
+                    <nav aria-label="Transactions pagination">
+                        <ul class="pagination mb-0">
+                            <li class="page-item @(Model.Page <= 1 ? "disabled" : "")">
+                                <a class="page-link" href="?Page=@(Model.Page-1)&PageSize=@Model.PageSize&SortBy=@Model.SortBy&SortOrder=@Model.SortOrder&FromDate=@Model.FromDate?.ToString("yyyy-MM-dd")&ToDate=@Model.ToDate?.ToString("yyyy-MM-dd")&CategoryId=@Model.CategoryId&PaymentMethodId=@Model.PaymentMethodId&Type=@Model.Type&SearchText=@Model.SearchText">
+                                    <i class="bi bi-chevron-left"></i>
+                                </a>
+                            </li>
+                            @for (int p = Math.Max(1, Model.Page - 2); p <= Math.Min(Model.TotalPages, Model.Page + 2); p++)
+                            {
+                                <li class="page-item @(p == Model.Page ? "active" : "")">
+                                    <a class="page-link" href="?Page=@p&PageSize=@Model.PageSize&SortBy=@Model.SortBy&SortOrder=@Model.SortOrder&FromDate=@Model.FromDate?.ToString("yyyy-MM-dd")&ToDate=@Model.ToDate?.ToString("yyyy-MM-dd")&CategoryId=@Model.CategoryId&PaymentMethodId=@Model.PaymentMethodId&Type=@Model.Type&SearchText=@Model.SearchText">@p</a>
+                                </li>
+                            }
+                            <li class="page-item @(Model.Page >= Model.TotalPages ? "disabled" : "")">
+                                <a class="page-link" href="?Page=@(Model.Page+1)&PageSize=@Model.PageSize&SortBy=@Model.SortBy&SortOrder=@Model.SortOrder&FromDate=@Model.FromDate?.ToString("yyyy-MM-dd")&ToDate=@Model.ToDate?.ToString("yyyy-MM-dd")&CategoryId=@Model.CategoryId&PaymentMethodId=@Model.PaymentMethodId&Type=@Model.Type&SearchText=@Model.SearchText">
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="empty-state">
+                <div class="empty-icon"><i class="bi bi-receipt"></i></div>
+                <h5>No Transactions Found</h5>
+                <p>No transactions match your filters. Try adjusting or clearing them.</p>
+                <div class="d-flex gap-2 justify-content-center">
+                    <a href="@Url.Action("Index")" class="btn btn-outline-secondary">
+                        <i class="bi bi-x-circle me-1"></i>Clear Filters
+                    </a>
+                    <a href="@Url.Action("Create")" class="btn btn-primary">
+                        <i class="bi bi-plus-lg me-1"></i>Add Transaction
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

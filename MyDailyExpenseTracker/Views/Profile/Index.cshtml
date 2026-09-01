@@ -1,0 +1,137 @@
+@model MyDailyExpenseTracker.ViewModels.ProfileViewModel
+@{
+    ViewData["Title"]     = "My Profile";
+    ViewData["PageTitle"] = "My Profile";
+}
+
+<div class="page-header">
+    <h1><i class="bi bi-person-fill me-2"></i>My Profile</h1>
+</div>
+
+<div class="row g-4">
+    <!-- Profile Form -->
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-header"><h2 class="card-title">Profile Information</h2></div>
+            <div class="card-body" style="padding:28px">
+                <form asp-action="Index" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-3"></div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label asp-for="FirstName" class="form-label">First Name</label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="LastName" class="form-label">Last Name</label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Email" class="form-label">Email Address</label>
+                            <input asp-for="Email" type="email" class="form-control" readonly style="opacity:.7" />
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                            <input asp-for="PhoneNumber" type="tel" class="form-control" placeholder="+91 98765 43210" />
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="Currency" class="form-label">Currency</label>
+                            <select asp-for="Currency" class="form-select">
+                                <option value="INR">₹ INR (Indian Rupee)</option>
+                                <option value="USD">$ USD (US Dollar)</option>
+                                <option value="EUR">€ EUR (Euro)</option>
+                                <option value="GBP">£ GBP (British Pound)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="DateFormat" class="form-label">Date Format</label>
+                            <select asp-for="DateFormat" class="form-select">
+                                <option value="dd-MM-yyyy">DD-MM-YYYY</option>
+                                <option value="MM/dd/yyyy">MM/DD/YYYY</option>
+                                <option value="yyyy-MM-dd">YYYY-MM-DD</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="Theme" class="form-label">Theme</label>
+                            <select asp-for="Theme" class="form-select" id="theme-select">
+                                <option value="light">☀️ Light</option>
+                                <option value="dark">🌙 Dark</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary px-4 py-2">
+                            <i class="bi bi-check-circle me-2"></i>Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Change Password Card -->
+        <div class="card mt-4">
+            <div class="card-header"><h2 class="card-title">Security</h2></div>
+            <div class="card-body">
+                <p style="color:var(--text-secondary);font-size:13.5px">Keep your account secure with a strong password.</p>
+                <a href="@Url.Action("ChangePassword")" class="btn btn-outline-primary">
+                    <i class="bi bi-shield-lock me-2"></i>Change Password
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Sidebar -->
+    <div class="col-lg-5">
+        <!-- Avatar Card -->
+        <div class="card mb-4">
+            <div class="card-body text-center py-4">
+                <div style="width:80px;height:80px;border-radius:50%;background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:32px;font-weight:800;margin:0 auto 16px">
+                    @((Model.FirstName.FirstOrDefault().ToString() + Model.LastName.FirstOrDefault().ToString()).ToUpper())
+                </div>
+                <h3 class="fw-800" style="font-size:20px">@Model.FullName</h3>
+                <p style="color:var(--text-muted);font-size:13px">@Model.Email</p>
+                <div class="divider"></div>
+                <div class="row text-center mt-3">
+                    <div class="col-6">
+                        <div class="fw-800" style="font-size:22px;color:var(--accent-primary)">@Model.TotalTransactions</div>
+                        <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Transactions</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="fw-800" style="font-size:22px;color:var(--color-income)">
+                            @((DateTime.Now - Model.MemberSince).Days)
+                        </div>
+                        <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Days Active</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Info -->
+        <div class="card">
+            <div class="card-header"><h2 class="card-title">Account Info</h2></div>
+            <div class="card-body">
+                <dl class="row mb-0" style="row-gap:12px;font-size:13.5px">
+                    <dt class="col-5" style="color:var(--text-muted)">Member Since</dt>
+                    <dd class="col-7 fw-600">@Model.MemberSince.ToString("dd MMM yyyy")</dd>
+                    <dt class="col-5" style="color:var(--text-muted)">Currency</dt>
+                    <dd class="col-7 fw-600">@Model.Currency</dd>
+                    <dt class="col-5" style="color:var(--text-muted)">Date Format</dt>
+                    <dd class="col-7 fw-600">@Model.DateFormat</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+// Apply theme immediately when select changes
+document.getElementById('theme-select')?.addEventListener('change', function() {
+    if (window.MDET) window.MDET.applyTheme(this.value);
+});
+</script>
+}
