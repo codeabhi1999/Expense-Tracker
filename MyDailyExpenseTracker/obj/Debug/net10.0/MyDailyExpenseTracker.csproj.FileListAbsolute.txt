@@ -247,7 +247,6 @@ C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\co
 C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\compressed\nezrqnk58p-{0}-muycvpuwrr-muycvpuwrr.gz
 C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\compressed\v0zgfp0y55-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\compressed\yfc7ypekbg-{0}-mlv21k5csn-mlv21k5csn.gz
-C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\compressed\j98iheouy8-{0}-ywo8vgu8xl-ywo8vgu8xl.gz
 C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\compressed\5lk508gh9n-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\compressed\qj19kq1l6f-{0}-e8zk1mduw4-e8zk1mduw4.gz
 C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\compressed\5rwlqwqzwv-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -322,3 +321,5 @@ C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\re
 C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\MyDailyExpenseTracker.pdb
 C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\MyDailyExpenseTracker.genruntimeconfig.cache
 C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\ref\MyDailyExpenseTracker.dll
+C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\MyDailyExpenseTracker.sourcelink.json
+C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker\obj\Debug\net10.0\compressed\j98iheouy8-{0}-4uhd97t6h9-4uhd97t6h9.gz

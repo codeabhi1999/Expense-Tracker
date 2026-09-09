@@ -3739,3 +3739,22 @@ WHERE [a].[Id] = @p
 2026-09-01 16:02:09.129 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker) in 7.4216ms
 2026-09-01 16:02:09.129 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
 2026-09-01 16:02:09.129 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Account/Login - 200 null text/html; charset=utf-8 8.4566ms
+2026-09-01 16:40:14.338 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Account/Login - null null
+2026-09-01 16:40:14.371 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
+2026-09-01 16:40:14.378 +05:30 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String) on controller MyDailyExpenseTracker.Controllers.AccountController (MyDailyExpenseTracker).
+2026-09-01 16:40:14.484 +05:30 [INF] Executing ViewResult, running view Login.
+2026-09-01 16:40:14.533 +05:30 [INF] Executed ViewResult - view Login executed in 87.6996ms.
+2026-09-01 16:40:14.533 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker) in 154.4381ms
+2026-09-01 16:40:14.534 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
+2026-09-01 16:40:14.536 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Account/Login - 200 null text/html; charset=utf-8 199.9418ms
+2026-09-01 16:42:38.322 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Account/Login - null null
+2026-09-01 16:42:38.322 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
+2026-09-01 16:42:38.322 +05:30 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String) on controller MyDailyExpenseTracker.Controllers.AccountController (MyDailyExpenseTracker).
+2026-09-01 16:42:38.323 +05:30 [INF] Executing ViewResult, running view Login.
+2026-09-01 16:42:38.325 +05:30 [INF] Executed ViewResult - view Login executed in 1.9334ms.
+2026-09-01 16:42:38.325 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker) in 2.4932ms
+2026-09-01 16:42:38.325 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
+2026-09-01 16:42:38.325 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Account/Login - 200 null text/html; charset=utf-8 3.0683ms
+2026-09-01 16:42:38.361 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/css/site.css?v=NiGeG3gMIB_gCKU2zoKtFZtN7uOXFbtxucmIzjaA7gU - null null
+2026-09-01 16:42:38.391 +05:30 [INF] The file /css/site.css was not modified
+2026-09-01 16:42:38.392 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/css/site.css?v=NiGeG3gMIB_gCKU2zoKtFZtN7uOXFbtxucmIzjaA7gU - 304 null text/css 30.8237ms

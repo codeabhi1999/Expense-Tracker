@@ -1,0 +1,13 @@
+{
+  "name": "my-daily-expense-tracker",
+  "version": "1.0.0",
+  "description": "My Daily Expense Tracker - ASP.NET Core MVC Application",
+  "scripts": {
+    "start": "dotnet run --project MyDailyExpenseTracker",
+    "dev": "dotnet run --project MyDailyExpenseTracker",
+    "build": "dotnet build MyDailyExpenseTracker"
+  },
+  "keywords": ["expense-tracker", "dotnet", "csharp", "mvc"],
+  "author": "Abhi",
+  "license": "ISC"
+}

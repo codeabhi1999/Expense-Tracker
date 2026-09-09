@@ -1,0 +1,1210 @@
+2026-09-08 21:48:16.558 +05:30 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-09-08 21:48:16.627 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-09-08 21:48:16.686 +05:30 [INF] Executed DbCommand (53ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-09-08 21:48:16.801 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-09-08 21:48:16.831 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-09-08 21:48:16.834 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-09-08 21:48:16.856 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-09-08 21:48:16.871 +05:30 [INF] No migrations were applied. The database is already up to date.
+2026-09-08 21:48:16.881 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-09-08 21:48:17.391 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@normalizedName='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @normalizedName
+2026-09-08 21:48:17.473 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@normalizedName='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @normalizedName
+2026-09-08 21:48:17.521 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.525 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.528 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.530 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.532 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.539 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.542 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.544 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.545 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.546 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.547 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.548 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.549 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.550 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.552 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.554 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.558 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.559 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.560 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.561 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.562 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.563 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.563 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.564 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @name AND [c].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.577 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [PaymentMethods] AS [p]
+        WHERE [p].[Name] = @name AND [p].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.578 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [PaymentMethods] AS [p]
+        WHERE [p].[Name] = @name AND [p].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.579 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [PaymentMethods] AS [p]
+        WHERE [p].[Name] = @name AND [p].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.581 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [PaymentMethods] AS [p]
+        WHERE [p].[Name] = @name AND [p].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.582 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [PaymentMethods] AS [p]
+        WHERE [p].[Name] = @name AND [p].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.583 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [PaymentMethods] AS [p]
+        WHERE [p].[Name] = @name AND [p].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.585 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@name='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [PaymentMethods] AS [p]
+        WHERE [p].[Name] = @name AND [p].[UserId] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-09-08 21:48:17.655 +05:30 [INF] User profile is available. Using 'C:\Users\ABHI\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-08 21:48:17.804 +05:30 [INF] Now listening on: http://localhost:5172
+2026-09-08 21:48:17.807 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-08 21:48:17.808 +05:30 [INF] Hosting environment: Development
+2026-09-08 21:48:17.808 +05:30 [INF] Content root path: C:\Users\ABHI\Desktop\Expense Tracker\MyDailyExpenseTracker
+2026-09-08 21:48:29.511 +05:30 [INF] Request starting HTTP/1.1 HEAD http://localhost:5172/ - null null
+2026-09-08 21:48:29.516 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-09-08 21:48:29.594 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 21:48:29.603 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-09-08 21:48:29.610 +05:30 [INF] Request finished HTTP/1.1 HEAD http://localhost:5172/ - 302 null null 102.1828ms
+2026-09-08 21:48:29.613 +05:30 [INF] Request starting HTTP/1.1 HEAD http://localhost:5172/Account/Login?ReturnUrl=%2F - null null
+2026-09-08 21:48:29.625 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2026-09-08 21:48:29.625 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2026-09-08 21:48:29.626 +05:30 [INF] Request finished HTTP/1.1 HEAD http://localhost:5172/Account/Login?ReturnUrl=%2F - 405 null null 12.5706ms
+2026-09-08 21:48:29.629 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/ - null null
+2026-09-08 21:48:29.635 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 21:48:29.636 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-09-08 21:48:29.636 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/ - 302 0 null 6.8228ms
+2026-09-08 21:48:29.637 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Account/Login?ReturnUrl=%2F - null null
+2026-09-08 21:48:29.641 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
+2026-09-08 21:48:29.667 +05:30 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String) on controller MyDailyExpenseTracker.Controllers.AccountController (MyDailyExpenseTracker).
+2026-09-08 21:48:29.770 +05:30 [INF] Executing ViewResult, running view Login.
+2026-09-08 21:48:30.064 +05:30 [INF] Executed ViewResult - view Login executed in 294.5068ms.
+2026-09-08 21:48:30.065 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker) in 395.7685ms
+2026-09-08 21:48:30.065 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
+2026-09-08 21:48:30.068 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Account/Login?ReturnUrl=%2F - 200 null text/html; charset=utf-8 431.6206ms
+2026-09-08 21:48:42.596 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/ - null null
+2026-09-08 21:48:42.605 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 21:48:42.608 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-09-08 21:48:42.617 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/ - 302 0 null 18.3633ms
+2026-09-08 21:48:42.632 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Account/Login?ReturnUrl=%2F - null null
+2026-09-08 21:48:42.634 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
+2026-09-08 21:48:42.635 +05:30 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String) on controller MyDailyExpenseTracker.Controllers.AccountController (MyDailyExpenseTracker).
+2026-09-08 21:48:42.648 +05:30 [INF] Executing ViewResult, running view Login.
+2026-09-08 21:48:42.696 +05:30 [INF] Executed ViewResult - view Login executed in 47.8725ms.
+2026-09-08 21:48:42.697 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker) in 61.4683ms
+2026-09-08 21:48:42.698 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
+2026-09-08 21:48:42.699 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Account/Login?ReturnUrl=%2F - 200 null text/html; charset=utf-8 66.91ms
+2026-09-08 21:48:42.771 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/css/site.css?v=NiGeG3gMIB_gCKU2zoKtFZtN7uOXFbtxucmIzjaA7gU - null null
+2026-09-08 21:48:42.772 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/js/site.js?v=XvixfUlZZbVs8ay4ybLVvOPCyYDYC6oeGZmLTMieI_8 - null null
+2026-09-08 21:48:42.791 +05:30 [INF] The file /js/site.js was not modified
+2026-09-08 21:48:42.792 +05:30 [INF] The file /css/site.css was not modified
+2026-09-08 21:48:42.793 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/js/site.js?v=XvixfUlZZbVs8ay4ybLVvOPCyYDYC6oeGZmLTMieI_8 - 304 null text/javascript 21.3526ms
+2026-09-08 21:48:42.793 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/css/site.css?v=NiGeG3gMIB_gCKU2zoKtFZtN7uOXFbtxucmIzjaA7gU - 304 null text/css 22.1478ms
+2026-09-08 21:48:45.160 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5172/Account/Login - application/x-www-form-urlencoded 269
+2026-09-08 21:48:45.161 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
+2026-09-08 21:48:45.183 +05:30 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(MyDailyExpenseTracker.ViewModels.LoginViewModel, System.String) on controller MyDailyExpenseTracker.Controllers.AccountController (MyDailyExpenseTracker).
+2026-09-08 21:48:45.384 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@normalizedUserName='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @normalizedUserName
+2026-09-08 21:48:45.660 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@user_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @user_Id
+2026-09-08 21:48:45.715 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @userId
+2026-09-08 21:48:45.726 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@normalizedName='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @normalizedName
+2026-09-08 21:48:45.747 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@role_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @role_Id
+2026-09-08 21:48:45.761 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2026-09-08 21:48:45.764 +05:30 [INF] User logged in: chavanabhijeet95@gmail.com
+2026-09-08 21:48:45.772 +05:30 [INF] Executing RedirectResult, redirecting to /.
+2026-09-08 21:48:45.774 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker) in 590.3631ms
+2026-09-08 21:48:45.775 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.AccountController.Login (MyDailyExpenseTracker)'
+2026-09-08 21:48:45.782 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5172/Account/Login - 302 0 null 621.8522ms
+2026-09-08 21:48:45.787 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/ - null null
+2026-09-08 21:48:45.796 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:45.811 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.DashboardController (MyDailyExpenseTracker).
+2026-09-08 21:48:45.852 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@userId='?' (Size = 450), @today='?' (DbType = DateTime2), @today2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[RecurringExpenseId], [r].[Amount], [r].[CategoryId], [r].[CreatedDate], [r].[EndDate], [r].[Frequency], [r].[IsActive], [r].[LastGeneratedDate], [r].[Name], [r].[Notes], [r].[PaymentMethodId], [r].[StartDate], [r].[Type], [r].[UserId]
+FROM [RecurringExpenses] AS [r]
+WHERE [r].[UserId] = @userId AND [r].[IsActive] = CAST(1 AS bit) AND [r].[StartDate] <= @today AND ([r].[EndDate] IS NULL OR [r].[EndDate] >= @today2)
+2026-09-08 21:48:46.041 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@userId='?' (Size = 450), @today_Month='?' (DbType = Int32), @today_Year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b1].[BudgetId], [b1].[CreatedDate], [b1].[Month], [b1].[Notes], [b1].[TotalBudget], [b1].[UpdatedDate], [b1].[UserId], [b1].[Year], [s].[BudgetCategoryId], [s].[Amount], [s].[BudgetId], [s].[CategoryId], [s].[CategoryId0], [s].[Color], [s].[CreatedDate], [s].[Icon], [s].[IsActive], [s].[IsDefault], [s].[Name], [s].[Type], [s].[UserId]
+FROM (
+    SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+    FROM [Budgets] AS [b]
+    WHERE [b].[UserId] = @userId AND [b].[Month] = @today_Month AND [b].[Year] = @today_Year
+) AS [b1]
+LEFT JOIN (
+    SELECT [b0].[BudgetCategoryId], [b0].[Amount], [b0].[BudgetId], [b0].[CategoryId], [c].[CategoryId] AS [CategoryId0], [c].[Color], [c].[CreatedDate], [c].[Icon], [c].[IsActive], [c].[IsDefault], [c].[Name], [c].[Type], [c].[UserId]
+    FROM [BudgetCategories] AS [b0]
+    INNER JOIN [Categories] AS [c] ON [b0].[CategoryId] = [c].[CategoryId]
+) AS [s] ON [b1].[BudgetId] = [s].[BudgetId]
+ORDER BY [b1].[BudgetId], [s].[BudgetCategoryId]
+2026-09-08 21:48:46.133 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Type], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND CONVERT(date, [t].[TransactionDate]) = @today
+GROUP BY [t].[Type]
+2026-09-08 21:48:46.145 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Type], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+GROUP BY [t].[Type]
+2026-09-08 21:48:46.171 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Income'
+2026-09-08 21:48:46.189 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense'
+2026-09-08 21:48:46.205 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+2026-09-08 21:48:46.218 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@userId='?' (Size = 450), @prevStart='?' (DbType = DateTime2), @prevEnd='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @prevStart AND [t].[TransactionDate] <= @prevEnd
+2026-09-08 21:48:46.252 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p='?' (DbType = Int32), @userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[TransactionId], [t0].[TransactionDate], [t0].[Description], [c].[Name] AS [CategoryName], [c].[Icon] AS [CategoryIcon], [c].[Color] AS [CategoryColor], [t0].[Type], [t0].[Amount], [p].[Name] AS [PaymentMethodName]
+FROM (
+    SELECT TOP(@p) [t].[TransactionId], [t].[Amount], [t].[CategoryId], [t].[CreatedDate], [t].[Description], [t].[PaymentMethodId], [t].[TransactionDate], [t].[Type]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId
+    ORDER BY [t].[TransactionDate] DESC, [t].[CreatedDate] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[CategoryId]
+LEFT JOIN [PaymentMethods] AS [p] ON [t0].[PaymentMethodId] = [p].[PaymentMethodId]
+ORDER BY [t0].[TransactionDate] DESC, [t0].[CreatedDate] DESC
+2026-09-08 21:48:46.309 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450), @sixMonthsAgo='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], DATEPART(year, [t].[TransactionDate]) AS [Year], DATEPART(month, [t].[TransactionDate]) AS [Month]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @sixMonthsAgo
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month]
+2026-09-08 21:48:46.335 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@userId='?' (Size = 450), @sixMonthsAgo='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], [t0].[Type], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], [t].[Type], DATEPART(year, [t].[TransactionDate]) AS [Year], DATEPART(month, [t].[TransactionDate]) AS [Month]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[TransactionDate] >= @sixMonthsAgo
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month], [t0].[Type]
+2026-09-08 21:48:46.365 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@p='?' (DbType = Int32), @userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@p) [c].[Name] AS [Category], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[CategoryId]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+GROUP BY [c].[Name]
+ORDER BY COALESCE(SUM([t].[Amount]), 0.0) DESC
+2026-09-08 21:48:46.384 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Key] AS [Day], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], DATEPART(day, [t].[TransactionDate]) AS [Key]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+) AS [t0]
+GROUP BY [t0].[Key]
+2026-09-08 21:48:46.404 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Name] AS [Method], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+LEFT JOIN [PaymentMethods] AS [p] ON [t].[PaymentMethodId] = [p].[PaymentMethodId]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today AND [t].[PaymentMethodId] IS NOT NULL
+GROUP BY [p].[Name]
+2026-09-08 21:48:46.421 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@userId='?' (Size = 450), @today_Month='?' (DbType = Int32), @today_Year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+FROM [Budgets] AS [b]
+WHERE [b].[UserId] = @userId AND [b].[Month] = @today_Month AND [b].[Year] = @today_Year
+2026-09-08 21:48:46.434 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @userId AND [n].[IsRead] = CAST(0 AS bit)
+2026-09-08 21:48:46.439 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:48:46.506 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:48:46.576 +05:30 [INF] Executed ViewResult - view Index executed in 139.2596ms.
+2026-09-08 21:48:46.579 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker) in 767.8722ms
+2026-09-08 21:48:46.579 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:46.580 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/ - 200 null text/html; charset=utf-8 793.1229ms
+2026-09-08 21:48:53.836 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Transactions - null null
+2026-09-08 21:48:53.844 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.TransactionsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:53.876 +05:30 [INF] Route matched with {action = "Index", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(MyDailyExpenseTracker.ViewModels.TransactionFilterViewModel) on controller MyDailyExpenseTracker.Controllers.TransactionsController (MyDailyExpenseTracker).
+2026-09-08 21:48:53.918 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Type], [t].[Amount]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+2026-09-08 21:48:53.941 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@userId='?' (Size = 450), @p='?' (DbType = Int32), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[TransactionId], [t0].[TransactionDate], [t0].[Description], [c].[Name] AS [CategoryName], [c].[Icon] AS [CategoryIcon], [c].[Color] AS [CategoryColor], [t0].[Type], [t0].[Amount], [p].[Name] AS [PaymentMethodName]
+FROM (
+    SELECT [t].[TransactionId], [t].[Amount], [t].[CategoryId], [t].[CreatedDate], [t].[Description], [t].[PaymentMethodId], [t].[TransactionDate], [t].[Type]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId
+    ORDER BY [t].[TransactionDate] DESC, [t].[CreatedDate] DESC
+    OFFSET @p ROWS FETCH NEXT @p2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[CategoryId]
+LEFT JOIN [PaymentMethods] AS [p] ON [t0].[PaymentMethodId] = [p].[PaymentMethodId]
+ORDER BY [t0].[TransactionDate] DESC, [t0].[CreatedDate] DESC
+2026-09-08 21:48:53.972 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT CONVERT(varchar(11), [c].[CategoryId]) AS [Value], [c].[Name] AS [Text]
+FROM [Categories] AS [c]
+WHERE [c].[IsActive] = CAST(1 AS bit) AND ([c].[UserId] = @userId OR [c].[UserId] IS NULL)
+ORDER BY [c].[Name]
+2026-09-08 21:48:53.990 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT CONVERT(varchar(11), [p].[PaymentMethodId]) AS [Value], [p].[Name] AS [Text]
+FROM [PaymentMethods] AS [p]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND ([p].[UserId] = @userId OR [p].[UserId] IS NULL)
+ORDER BY [p].[Name]
+2026-09-08 21:48:53.993 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:48:54.039 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:48:54.042 +05:30 [INF] Executed ViewResult - view Index executed in 50.2087ms.
+2026-09-08 21:48:54.042 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.TransactionsController.Index (MyDailyExpenseTracker) in 165.2772ms
+2026-09-08 21:48:54.042 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.TransactionsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:54.042 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Transactions - 200 null text/html; charset=utf-8 206.4442ms
+2026-09-08 21:48:55.698 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Categories - null null
+2026-09-08 21:48:55.706 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.CategoriesController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:55.718 +05:30 [INF] Route matched with {action = "Index", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.CategoriesController (MyDailyExpenseTracker).
+2026-09-08 21:48:55.759 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[CategoryId], COUNT(*) AS [Count]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+GROUP BY [t].[CategoryId]
+2026-09-08 21:48:55.783 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Name], [c].[Icon], [c].[Color], [c].[Type], [c].[IsDefault]
+FROM [Categories] AS [c]
+WHERE [c].[IsActive] = CAST(1 AS bit) AND ([c].[UserId] = @userId OR [c].[UserId] IS NULL)
+ORDER BY [c].[Type], [c].[Name]
+2026-09-08 21:48:55.791 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:48:55.826 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:48:55.830 +05:30 [INF] Executed ViewResult - view Index executed in 39.9796ms.
+2026-09-08 21:48:55.831 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.CategoriesController.Index (MyDailyExpenseTracker) in 112.7502ms
+2026-09-08 21:48:55.831 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.CategoriesController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:55.832 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Categories - 200 null text/html; charset=utf-8 134.6065ms
+2026-09-08 21:48:56.939 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/PaymentMethods - null null
+2026-09-08 21:48:56.941 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.PaymentMethodsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:56.953 +05:30 [INF] Route matched with {action = "Index", controller = "PaymentMethods"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.PaymentMethodsController (MyDailyExpenseTracker).
+2026-09-08 21:48:56.984 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[PaymentMethodId] AS [MethodId], COUNT(*) AS [Count]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[PaymentMethodId] IS NOT NULL
+GROUP BY [t].[PaymentMethodId]
+2026-09-08 21:48:57.032 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PaymentMethodId], [p].[Name], [p].[Icon], [p].[IsDefault]
+FROM [PaymentMethods] AS [p]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND ([p].[UserId] = @userId OR [p].[UserId] IS NULL)
+ORDER BY [p].[Name]
+2026-09-08 21:48:57.037 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:48:57.057 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:48:57.059 +05:30 [INF] Executed ViewResult - view Index executed in 23.8411ms.
+2026-09-08 21:48:57.059 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.PaymentMethodsController.Index (MyDailyExpenseTracker) in 105.9702ms
+2026-09-08 21:48:57.059 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.PaymentMethodsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:57.060 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/PaymentMethods - 200 null text/html; charset=utf-8 120.427ms
+2026-09-08 21:48:58.364 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Budget - null null
+2026-09-08 21:48:58.368 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.BudgetController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:58.390 +05:30 [INF] Route matched with {action = "Index", controller = "Budget"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32, Int32) on controller MyDailyExpenseTracker.Controllers.BudgetController (MyDailyExpenseTracker).
+2026-09-08 21:48:58.440 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@userId='?' (Size = 450), @month='?' (DbType = Int32), @year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b1].[BudgetId], [b1].[CreatedDate], [b1].[Month], [b1].[Notes], [b1].[TotalBudget], [b1].[UpdatedDate], [b1].[UserId], [b1].[Year], [s].[BudgetCategoryId], [s].[Amount], [s].[BudgetId], [s].[CategoryId], [s].[CategoryId0], [s].[Color], [s].[CreatedDate], [s].[Icon], [s].[IsActive], [s].[IsDefault], [s].[Name], [s].[Type], [s].[UserId]
+FROM (
+    SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+    FROM [Budgets] AS [b]
+    WHERE [b].[UserId] = @userId AND [b].[Month] = @month AND [b].[Year] = @year
+) AS [b1]
+LEFT JOIN (
+    SELECT [b0].[BudgetCategoryId], [b0].[Amount], [b0].[BudgetId], [b0].[CategoryId], [c].[CategoryId] AS [CategoryId0], [c].[Color], [c].[CreatedDate], [c].[Icon], [c].[IsActive], [c].[IsDefault], [c].[Name], [c].[Type], [c].[UserId]
+    FROM [BudgetCategories] AS [b0]
+    INNER JOIN [Categories] AS [c] ON [b0].[CategoryId] = [c].[CategoryId]
+) AS [s] ON [b1].[BudgetId] = [s].[BudgetId]
+ORDER BY [b1].[BudgetId], [s].[BudgetCategoryId]
+2026-09-08 21:48:58.449 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[CategoryId], COUNT(*) AS [Count]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+GROUP BY [t].[CategoryId]
+2026-09-08 21:48:58.456 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Name], [c].[Icon], [c].[Color], [c].[Type], [c].[IsDefault]
+FROM [Categories] AS [c]
+WHERE [c].[IsActive] = CAST(1 AS bit) AND ([c].[UserId] = @userId OR [c].[UserId] IS NULL)
+ORDER BY [c].[Type], [c].[Name]
+2026-09-08 21:48:58.474 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @monthEnd='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[CategoryId], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @monthEnd
+GROUP BY [t].[CategoryId]
+2026-09-08 21:48:58.489 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:48:58.542 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:48:58.544 +05:30 [INF] Executed ViewResult - view Index executed in 55.9255ms.
+2026-09-08 21:48:58.545 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.BudgetController.Index (MyDailyExpenseTracker) in 154.1482ms
+2026-09-08 21:48:58.545 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.BudgetController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:58.545 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Budget - 200 null text/html; charset=utf-8 181.5567ms
+2026-09-08 21:48:59.437 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/RecurringExpenses - null null
+2026-09-08 21:48:59.438 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.RecurringExpensesController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:59.449 +05:30 [INF] Route matched with {action = "Index", controller = "RecurringExpenses"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.RecurringExpensesController (MyDailyExpenseTracker).
+2026-09-08 21:48:59.483 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[RecurringExpenseId], [r].[Name], [r].[Amount], [r].[Type], [r].[CategoryId], [c].[Name] AS [CategoryName], [r].[PaymentMethodId], [p].[Name] AS [PaymentMethodName], [r].[Frequency], [r].[StartDate], [r].[EndDate], [r].[IsActive], [r].[LastGeneratedDate], [r].[Notes]
+FROM [RecurringExpenses] AS [r]
+INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[CategoryId]
+LEFT JOIN [PaymentMethods] AS [p] ON [r].[PaymentMethodId] = [p].[PaymentMethodId]
+WHERE [r].[UserId] = @userId
+ORDER BY [r].[Name]
+2026-09-08 21:48:59.486 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:48:59.506 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:48:59.508 +05:30 [INF] Executed ViewResult - view Index executed in 23.4121ms.
+2026-09-08 21:48:59.508 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.RecurringExpensesController.Index (MyDailyExpenseTracker) in 58.6209ms
+2026-09-08 21:48:59.508 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.RecurringExpensesController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:48:59.509 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/RecurringExpenses - 200 null text/html; charset=utf-8 71.8988ms
+2026-09-08 21:49:00.982 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Reports - null null
+2026-09-08 21:49:00.984 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.ReportsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:01.000 +05:30 [INF] Route matched with {action = "Index", controller = "Reports"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32, Int32) on controller MyDailyExpenseTracker.Controllers.ReportsController (MyDailyExpenseTracker).
+2026-09-08 21:49:01.050 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @monthEnd='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TransactionId], [t].[Amount], [t].[CategoryId], [t].[CreatedDate], [t].[Description], [t].[Notes], [t].[PaymentMethodId], [t].[RecurringExpenseId], [t].[TransactionDate], [t].[Type], [t].[UpdatedDate], [t].[UserId], [c].[CategoryId], [c].[Color], [c].[CreatedDate], [c].[Icon], [c].[IsActive], [c].[IsDefault], [c].[Name], [c].[Type], [c].[UserId], [p].[PaymentMethodId], [p].[CreatedDate], [p].[Icon], [p].[IsActive], [p].[IsDefault], [p].[Name], [p].[UserId]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[CategoryId]
+LEFT JOIN [PaymentMethods] AS [p] ON [t].[PaymentMethodId] = [p].[PaymentMethodId]
+WHERE [t].[UserId] = @userId AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @monthEnd
+2026-09-08 21:49:01.081 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT MIN([t].[TransactionDate])
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+2026-09-08 21:49:01.090 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:01.186 +05:30 [INF] Executed DbCommand (42ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:01.190 +05:30 [INF] Executed ViewResult - view Index executed in 101.4739ms.
+2026-09-08 21:49:01.190 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.ReportsController.Index (MyDailyExpenseTracker) in 189.9637ms
+2026-09-08 21:49:01.190 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.ReportsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:01.191 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Reports - 200 null text/html; charset=utf-8 208.2497ms
+2026-09-08 21:49:03.663 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/ - null null
+2026-09-08 21:49:03.666 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:03.666 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.DashboardController (MyDailyExpenseTracker).
+2026-09-08 21:49:03.696 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@userId='?' (Size = 450), @today='?' (DbType = DateTime2), @today2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[RecurringExpenseId], [r].[Amount], [r].[CategoryId], [r].[CreatedDate], [r].[EndDate], [r].[Frequency], [r].[IsActive], [r].[LastGeneratedDate], [r].[Name], [r].[Notes], [r].[PaymentMethodId], [r].[StartDate], [r].[Type], [r].[UserId]
+FROM [RecurringExpenses] AS [r]
+WHERE [r].[UserId] = @userId AND [r].[IsActive] = CAST(1 AS bit) AND [r].[StartDate] <= @today AND ([r].[EndDate] IS NULL OR [r].[EndDate] >= @today2)
+2026-09-08 21:49:03.727 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[@userId='?' (Size = 450), @today_Month='?' (DbType = Int32), @today_Year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b1].[BudgetId], [b1].[CreatedDate], [b1].[Month], [b1].[Notes], [b1].[TotalBudget], [b1].[UpdatedDate], [b1].[UserId], [b1].[Year], [s].[BudgetCategoryId], [s].[Amount], [s].[BudgetId], [s].[CategoryId], [s].[CategoryId0], [s].[Color], [s].[CreatedDate], [s].[Icon], [s].[IsActive], [s].[IsDefault], [s].[Name], [s].[Type], [s].[UserId]
+FROM (
+    SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+    FROM [Budgets] AS [b]
+    WHERE [b].[UserId] = @userId AND [b].[Month] = @today_Month AND [b].[Year] = @today_Year
+) AS [b1]
+LEFT JOIN (
+    SELECT [b0].[BudgetCategoryId], [b0].[Amount], [b0].[BudgetId], [b0].[CategoryId], [c].[CategoryId] AS [CategoryId0], [c].[Color], [c].[CreatedDate], [c].[Icon], [c].[IsActive], [c].[IsDefault], [c].[Name], [c].[Type], [c].[UserId]
+    FROM [BudgetCategories] AS [b0]
+    INNER JOIN [Categories] AS [c] ON [b0].[CategoryId] = [c].[CategoryId]
+) AS [s] ON [b1].[BudgetId] = [s].[BudgetId]
+ORDER BY [b1].[BudgetId], [s].[BudgetCategoryId]
+2026-09-08 21:49:03.746 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@userId='?' (Size = 450), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Type], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND CONVERT(date, [t].[TransactionDate]) = @today
+GROUP BY [t].[Type]
+2026-09-08 21:49:03.758 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Type], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+GROUP BY [t].[Type]
+2026-09-08 21:49:03.770 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Income'
+2026-09-08 21:49:03.782 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense'
+2026-09-08 21:49:03.786 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+2026-09-08 21:49:03.795 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@userId='?' (Size = 450), @prevStart='?' (DbType = DateTime2), @prevEnd='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @prevStart AND [t].[TransactionDate] <= @prevEnd
+2026-09-08 21:49:03.810 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@p='?' (DbType = Int32), @userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[TransactionId], [t0].[TransactionDate], [t0].[Description], [c].[Name] AS [CategoryName], [c].[Icon] AS [CategoryIcon], [c].[Color] AS [CategoryColor], [t0].[Type], [t0].[Amount], [p].[Name] AS [PaymentMethodName]
+FROM (
+    SELECT TOP(@p) [t].[TransactionId], [t].[Amount], [t].[CategoryId], [t].[CreatedDate], [t].[Description], [t].[PaymentMethodId], [t].[TransactionDate], [t].[Type]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId
+    ORDER BY [t].[TransactionDate] DESC, [t].[CreatedDate] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[CategoryId]
+LEFT JOIN [PaymentMethods] AS [p] ON [t0].[PaymentMethodId] = [p].[PaymentMethodId]
+ORDER BY [t0].[TransactionDate] DESC, [t0].[CreatedDate] DESC
+2026-09-08 21:49:03.824 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@userId='?' (Size = 450), @sixMonthsAgo='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], DATEPART(year, [t].[TransactionDate]) AS [Year], DATEPART(month, [t].[TransactionDate]) AS [Month]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @sixMonthsAgo
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month]
+2026-09-08 21:49:03.837 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@userId='?' (Size = 450), @sixMonthsAgo='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], [t0].[Type], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], [t].[Type], DATEPART(year, [t].[TransactionDate]) AS [Year], DATEPART(month, [t].[TransactionDate]) AS [Month]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[TransactionDate] >= @sixMonthsAgo
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month], [t0].[Type]
+2026-09-08 21:49:03.850 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@p='?' (DbType = Int32), @userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@p) [c].[Name] AS [Category], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[CategoryId]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+GROUP BY [c].[Name]
+ORDER BY COALESCE(SUM([t].[Amount]), 0.0) DESC
+2026-09-08 21:49:03.864 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Key] AS [Day], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], DATEPART(day, [t].[TransactionDate]) AS [Key]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+) AS [t0]
+GROUP BY [t0].[Key]
+2026-09-08 21:49:03.880 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Name] AS [Method], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+LEFT JOIN [PaymentMethods] AS [p] ON [t].[PaymentMethodId] = [p].[PaymentMethodId]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today AND [t].[PaymentMethodId] IS NOT NULL
+GROUP BY [p].[Name]
+2026-09-08 21:49:03.888 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@userId='?' (Size = 450), @today_Month='?' (DbType = Int32), @today_Year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+FROM [Budgets] AS [b]
+WHERE [b].[UserId] = @userId AND [b].[Month] = @today_Month AND [b].[Year] = @today_Year
+2026-09-08 21:49:03.895 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @userId AND [n].[IsRead] = CAST(0 AS bit)
+2026-09-08 21:49:03.897 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:03.910 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:03.915 +05:30 [INF] Executed ViewResult - view Index executed in 18.3192ms.
+2026-09-08 21:49:03.915 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker) in 247.7488ms
+2026-09-08 21:49:03.915 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:03.916 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/ - 200 null text/html; charset=utf-8 253.0622ms
+2026-09-08 21:49:11.366 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Transactions - null null
+2026-09-08 21:49:11.367 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.TransactionsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:11.367 +05:30 [INF] Route matched with {action = "Index", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(MyDailyExpenseTracker.ViewModels.TransactionFilterViewModel) on controller MyDailyExpenseTracker.Controllers.TransactionsController (MyDailyExpenseTracker).
+2026-09-08 21:49:11.399 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Type], [t].[Amount]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+2026-09-08 21:49:11.416 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@userId='?' (Size = 450), @p='?' (DbType = Int32), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[TransactionId], [t0].[TransactionDate], [t0].[Description], [c].[Name] AS [CategoryName], [c].[Icon] AS [CategoryIcon], [c].[Color] AS [CategoryColor], [t0].[Type], [t0].[Amount], [p].[Name] AS [PaymentMethodName]
+FROM (
+    SELECT [t].[TransactionId], [t].[Amount], [t].[CategoryId], [t].[CreatedDate], [t].[Description], [t].[PaymentMethodId], [t].[TransactionDate], [t].[Type]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId
+    ORDER BY [t].[TransactionDate] DESC, [t].[CreatedDate] DESC
+    OFFSET @p ROWS FETCH NEXT @p2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[CategoryId]
+LEFT JOIN [PaymentMethods] AS [p] ON [t0].[PaymentMethodId] = [p].[PaymentMethodId]
+ORDER BY [t0].[TransactionDate] DESC, [t0].[CreatedDate] DESC
+2026-09-08 21:49:11.433 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT CONVERT(varchar(11), [c].[CategoryId]) AS [Value], [c].[Name] AS [Text]
+FROM [Categories] AS [c]
+WHERE [c].[IsActive] = CAST(1 AS bit) AND ([c].[UserId] = @userId OR [c].[UserId] IS NULL)
+ORDER BY [c].[Name]
+2026-09-08 21:49:11.447 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT CONVERT(varchar(11), [p].[PaymentMethodId]) AS [Value], [p].[Name] AS [Text]
+FROM [PaymentMethods] AS [p]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND ([p].[UserId] = @userId OR [p].[UserId] IS NULL)
+ORDER BY [p].[Name]
+2026-09-08 21:49:11.448 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:11.460 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:11.463 +05:30 [INF] Executed ViewResult - view Index executed in 14.9861ms.
+2026-09-08 21:49:11.463 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.TransactionsController.Index (MyDailyExpenseTracker) in 95.7017ms
+2026-09-08 21:49:11.463 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.TransactionsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:11.463 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Transactions - 200 null text/html; charset=utf-8 97.7729ms
+2026-09-08 21:49:17.058 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Categories - null null
+2026-09-08 21:49:17.060 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.CategoriesController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:17.060 +05:30 [INF] Route matched with {action = "Index", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.CategoriesController (MyDailyExpenseTracker).
+2026-09-08 21:49:17.090 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[CategoryId], COUNT(*) AS [Count]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+GROUP BY [t].[CategoryId]
+2026-09-08 21:49:17.109 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Name], [c].[Icon], [c].[Color], [c].[Type], [c].[IsDefault]
+FROM [Categories] AS [c]
+WHERE [c].[IsActive] = CAST(1 AS bit) AND ([c].[UserId] = @userId OR [c].[UserId] IS NULL)
+ORDER BY [c].[Type], [c].[Name]
+2026-09-08 21:49:17.111 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:17.125 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:17.127 +05:30 [INF] Executed ViewResult - view Index executed in 16.2707ms.
+2026-09-08 21:49:17.127 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.CategoriesController.Index (MyDailyExpenseTracker) in 66.9737ms
+2026-09-08 21:49:17.127 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.CategoriesController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:17.127 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Categories - 200 null text/html; charset=utf-8 68.87ms
+2026-09-08 21:49:22.022 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/PaymentMethods - null null
+2026-09-08 21:49:22.023 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.PaymentMethodsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:22.024 +05:30 [INF] Route matched with {action = "Index", controller = "PaymentMethods"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.PaymentMethodsController (MyDailyExpenseTracker).
+2026-09-08 21:49:22.049 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[PaymentMethodId] AS [MethodId], COUNT(*) AS [Count]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[PaymentMethodId] IS NOT NULL
+GROUP BY [t].[PaymentMethodId]
+2026-09-08 21:49:22.059 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PaymentMethodId], [p].[Name], [p].[Icon], [p].[IsDefault]
+FROM [PaymentMethods] AS [p]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND ([p].[UserId] = @userId OR [p].[UserId] IS NULL)
+ORDER BY [p].[Name]
+2026-09-08 21:49:22.061 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:22.076 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:22.078 +05:30 [INF] Executed ViewResult - view Index executed in 17.7924ms.
+2026-09-08 21:49:22.079 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.PaymentMethodsController.Index (MyDailyExpenseTracker) in 55.8256ms
+2026-09-08 21:49:22.080 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.PaymentMethodsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:22.080 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/PaymentMethods - 200 null text/html; charset=utf-8 57.869ms
+2026-09-08 21:49:25.701 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Budget - null null
+2026-09-08 21:49:25.703 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.BudgetController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:25.703 +05:30 [INF] Route matched with {action = "Index", controller = "Budget"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32, Int32) on controller MyDailyExpenseTracker.Controllers.BudgetController (MyDailyExpenseTracker).
+2026-09-08 21:49:25.764 +05:30 [INF] Executed DbCommand (55ms) [Parameters=[@userId='?' (Size = 450), @month='?' (DbType = Int32), @year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b1].[BudgetId], [b1].[CreatedDate], [b1].[Month], [b1].[Notes], [b1].[TotalBudget], [b1].[UpdatedDate], [b1].[UserId], [b1].[Year], [s].[BudgetCategoryId], [s].[Amount], [s].[BudgetId], [s].[CategoryId], [s].[CategoryId0], [s].[Color], [s].[CreatedDate], [s].[Icon], [s].[IsActive], [s].[IsDefault], [s].[Name], [s].[Type], [s].[UserId]
+FROM (
+    SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+    FROM [Budgets] AS [b]
+    WHERE [b].[UserId] = @userId AND [b].[Month] = @month AND [b].[Year] = @year
+) AS [b1]
+LEFT JOIN (
+    SELECT [b0].[BudgetCategoryId], [b0].[Amount], [b0].[BudgetId], [b0].[CategoryId], [c].[CategoryId] AS [CategoryId0], [c].[Color], [c].[CreatedDate], [c].[Icon], [c].[IsActive], [c].[IsDefault], [c].[Name], [c].[Type], [c].[UserId]
+    FROM [BudgetCategories] AS [b0]
+    INNER JOIN [Categories] AS [c] ON [b0].[CategoryId] = [c].[CategoryId]
+) AS [s] ON [b1].[BudgetId] = [s].[BudgetId]
+ORDER BY [b1].[BudgetId], [s].[BudgetCategoryId]
+2026-09-08 21:49:25.788 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[CategoryId], COUNT(*) AS [Count]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+GROUP BY [t].[CategoryId]
+2026-09-08 21:49:25.804 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Name], [c].[Icon], [c].[Color], [c].[Type], [c].[IsDefault]
+FROM [Categories] AS [c]
+WHERE [c].[IsActive] = CAST(1 AS bit) AND ([c].[UserId] = @userId OR [c].[UserId] IS NULL)
+ORDER BY [c].[Type], [c].[Name]
+2026-09-08 21:49:25.820 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @monthEnd='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[CategoryId], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @monthEnd
+GROUP BY [t].[CategoryId]
+2026-09-08 21:49:25.821 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:25.839 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:25.841 +05:30 [INF] Executed ViewResult - view Index executed in 20.3353ms.
+2026-09-08 21:49:25.841 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.BudgetController.Index (MyDailyExpenseTracker) in 137.8523ms
+2026-09-08 21:49:25.841 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.BudgetController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:25.842 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Budget - 200 null text/html; charset=utf-8 141.1245ms
+2026-09-08 21:49:28.755 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/RecurringExpenses - null null
+2026-09-08 21:49:28.756 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.RecurringExpensesController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:28.757 +05:30 [INF] Route matched with {action = "Index", controller = "RecurringExpenses"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.RecurringExpensesController (MyDailyExpenseTracker).
+2026-09-08 21:49:28.785 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[RecurringExpenseId], [r].[Name], [r].[Amount], [r].[Type], [r].[CategoryId], [c].[Name] AS [CategoryName], [r].[PaymentMethodId], [p].[Name] AS [PaymentMethodName], [r].[Frequency], [r].[StartDate], [r].[EndDate], [r].[IsActive], [r].[LastGeneratedDate], [r].[Notes]
+FROM [RecurringExpenses] AS [r]
+INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[CategoryId]
+LEFT JOIN [PaymentMethods] AS [p] ON [r].[PaymentMethodId] = [p].[PaymentMethodId]
+WHERE [r].[UserId] = @userId
+ORDER BY [r].[Name]
+2026-09-08 21:49:28.787 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:28.812 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:28.815 +05:30 [INF] Executed ViewResult - view Index executed in 28.1148ms.
+2026-09-08 21:49:28.815 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.RecurringExpensesController.Index (MyDailyExpenseTracker) in 58.0388ms
+2026-09-08 21:49:28.815 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.RecurringExpensesController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:28.815 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/RecurringExpenses - 200 null text/html; charset=utf-8 60.1196ms
+2026-09-08 21:49:30.682 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Reports - null null
+2026-09-08 21:49:30.683 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.ReportsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:30.683 +05:30 [INF] Route matched with {action = "Index", controller = "Reports"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32, Int32) on controller MyDailyExpenseTracker.Controllers.ReportsController (MyDailyExpenseTracker).
+2026-09-08 21:49:30.705 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @monthEnd='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TransactionId], [t].[Amount], [t].[CategoryId], [t].[CreatedDate], [t].[Description], [t].[Notes], [t].[PaymentMethodId], [t].[RecurringExpenseId], [t].[TransactionDate], [t].[Type], [t].[UpdatedDate], [t].[UserId], [c].[CategoryId], [c].[Color], [c].[CreatedDate], [c].[Icon], [c].[IsActive], [c].[IsDefault], [c].[Name], [c].[Type], [c].[UserId], [p].[PaymentMethodId], [p].[CreatedDate], [p].[Icon], [p].[IsActive], [p].[IsDefault], [p].[Name], [p].[UserId]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[CategoryId]
+LEFT JOIN [PaymentMethods] AS [p] ON [t].[PaymentMethodId] = [p].[PaymentMethodId]
+WHERE [t].[UserId] = @userId AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @monthEnd
+2026-09-08 21:49:30.715 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT MIN([t].[TransactionDate])
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+2026-09-08 21:49:30.717 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:30.726 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:30.732 +05:30 [INF] Executed ViewResult - view Index executed in 15.9352ms.
+2026-09-08 21:49:30.733 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.ReportsController.Index (MyDailyExpenseTracker) in 49.1619ms
+2026-09-08 21:49:30.734 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.ReportsController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:30.734 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Reports - 200 null text/html; charset=utf-8 52.1806ms
+2026-09-08 21:49:35.665 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Profile - null null
+2026-09-08 21:49:35.667 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.ProfileController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:35.690 +05:30 [INF] Route matched with {action = "Index", controller = "Profile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.ProfileController (MyDailyExpenseTracker).
+2026-09-08 21:49:35.709 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:35.748 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@user_Id='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @user_Id
+2026-09-08 21:49:35.751 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:35.837 +05:30 [INF] Executed ViewResult - view Index executed in 86.5787ms.
+2026-09-08 21:49:35.837 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.ProfileController.Index (MyDailyExpenseTracker) in 146.7541ms
+2026-09-08 21:49:35.837 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.ProfileController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:35.838 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Profile - 200 null text/html; charset=utf-8 172.2489ms
+2026-09-08 21:49:40.287 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/ - null null
+2026-09-08 21:49:40.291 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:40.291 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.DashboardController (MyDailyExpenseTracker).
+2026-09-08 21:49:40.312 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@userId='?' (Size = 450), @today='?' (DbType = DateTime2), @today2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[RecurringExpenseId], [r].[Amount], [r].[CategoryId], [r].[CreatedDate], [r].[EndDate], [r].[Frequency], [r].[IsActive], [r].[LastGeneratedDate], [r].[Name], [r].[Notes], [r].[PaymentMethodId], [r].[StartDate], [r].[Type], [r].[UserId]
+FROM [RecurringExpenses] AS [r]
+WHERE [r].[UserId] = @userId AND [r].[IsActive] = CAST(1 AS bit) AND [r].[StartDate] <= @today AND ([r].[EndDate] IS NULL OR [r].[EndDate] >= @today2)
+2026-09-08 21:49:40.331 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@userId='?' (Size = 450), @today_Month='?' (DbType = Int32), @today_Year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b1].[BudgetId], [b1].[CreatedDate], [b1].[Month], [b1].[Notes], [b1].[TotalBudget], [b1].[UpdatedDate], [b1].[UserId], [b1].[Year], [s].[BudgetCategoryId], [s].[Amount], [s].[BudgetId], [s].[CategoryId], [s].[CategoryId0], [s].[Color], [s].[CreatedDate], [s].[Icon], [s].[IsActive], [s].[IsDefault], [s].[Name], [s].[Type], [s].[UserId]
+FROM (
+    SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+    FROM [Budgets] AS [b]
+    WHERE [b].[UserId] = @userId AND [b].[Month] = @today_Month AND [b].[Year] = @today_Year
+) AS [b1]
+LEFT JOIN (
+    SELECT [b0].[BudgetCategoryId], [b0].[Amount], [b0].[BudgetId], [b0].[CategoryId], [c].[CategoryId] AS [CategoryId0], [c].[Color], [c].[CreatedDate], [c].[Icon], [c].[IsActive], [c].[IsDefault], [c].[Name], [c].[Type], [c].[UserId]
+    FROM [BudgetCategories] AS [b0]
+    INNER JOIN [Categories] AS [c] ON [b0].[CategoryId] = [c].[CategoryId]
+) AS [s] ON [b1].[BudgetId] = [s].[BudgetId]
+ORDER BY [b1].[BudgetId], [s].[BudgetCategoryId]
+2026-09-08 21:49:40.341 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Type], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND CONVERT(date, [t].[TransactionDate]) = @today
+GROUP BY [t].[Type]
+2026-09-08 21:49:40.351 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Type], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+GROUP BY [t].[Type]
+2026-09-08 21:49:40.364 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Income'
+2026-09-08 21:49:40.372 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense'
+2026-09-08 21:49:40.378 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+2026-09-08 21:49:40.387 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450), @prevStart='?' (DbType = DateTime2), @prevEnd='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @prevStart AND [t].[TransactionDate] <= @prevEnd
+2026-09-08 21:49:40.397 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p='?' (DbType = Int32), @userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[TransactionId], [t0].[TransactionDate], [t0].[Description], [c].[Name] AS [CategoryName], [c].[Icon] AS [CategoryIcon], [c].[Color] AS [CategoryColor], [t0].[Type], [t0].[Amount], [p].[Name] AS [PaymentMethodName]
+FROM (
+    SELECT TOP(@p) [t].[TransactionId], [t].[Amount], [t].[CategoryId], [t].[CreatedDate], [t].[Description], [t].[PaymentMethodId], [t].[TransactionDate], [t].[Type]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId
+    ORDER BY [t].[TransactionDate] DESC, [t].[CreatedDate] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[CategoryId]
+LEFT JOIN [PaymentMethods] AS [p] ON [t0].[PaymentMethodId] = [p].[PaymentMethodId]
+ORDER BY [t0].[TransactionDate] DESC, [t0].[CreatedDate] DESC
+2026-09-08 21:49:40.406 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450), @sixMonthsAgo='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], DATEPART(year, [t].[TransactionDate]) AS [Year], DATEPART(month, [t].[TransactionDate]) AS [Month]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @sixMonthsAgo
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month]
+2026-09-08 21:49:40.416 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450), @sixMonthsAgo='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], [t0].[Type], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], [t].[Type], DATEPART(year, [t].[TransactionDate]) AS [Year], DATEPART(month, [t].[TransactionDate]) AS [Month]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[TransactionDate] >= @sixMonthsAgo
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month], [t0].[Type]
+2026-09-08 21:49:40.431 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@p='?' (DbType = Int32), @userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@p) [c].[Name] AS [Category], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[CategoryId]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+GROUP BY [c].[Name]
+ORDER BY COALESCE(SUM([t].[Amount]), 0.0) DESC
+2026-09-08 21:49:40.442 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Key] AS [Day], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], DATEPART(day, [t].[TransactionDate]) AS [Key]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+) AS [t0]
+GROUP BY [t0].[Key]
+2026-09-08 21:49:40.452 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Name] AS [Method], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+LEFT JOIN [PaymentMethods] AS [p] ON [t].[PaymentMethodId] = [p].[PaymentMethodId]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today AND [t].[PaymentMethodId] IS NOT NULL
+GROUP BY [p].[Name]
+2026-09-08 21:49:40.457 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@userId='?' (Size = 450), @today_Month='?' (DbType = Int32), @today_Year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+FROM [Budgets] AS [b]
+WHERE [b].[UserId] = @userId AND [b].[Month] = @today_Month AND [b].[Year] = @today_Year
+2026-09-08 21:49:40.462 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @userId AND [n].[IsRead] = CAST(0 AS bit)
+2026-09-08 21:49:40.462 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:40.471 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:40.473 +05:30 [INF] Executed ViewResult - view Index executed in 10.9606ms.
+2026-09-08 21:49:40.473 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker) in 182.1056ms
+2026-09-08 21:49:40.474 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:40.474 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/ - 200 null text/html; charset=utf-8 186.3829ms
+2026-09-08 21:49:44.278 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Budget - null null
+2026-09-08 21:49:44.280 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.BudgetController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:44.280 +05:30 [INF] Route matched with {action = "Index", controller = "Budget"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Int32, Int32) on controller MyDailyExpenseTracker.Controllers.BudgetController (MyDailyExpenseTracker).
+2026-09-08 21:49:44.315 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[@userId='?' (Size = 450), @month='?' (DbType = Int32), @year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b1].[BudgetId], [b1].[CreatedDate], [b1].[Month], [b1].[Notes], [b1].[TotalBudget], [b1].[UpdatedDate], [b1].[UserId], [b1].[Year], [s].[BudgetCategoryId], [s].[Amount], [s].[BudgetId], [s].[CategoryId], [s].[CategoryId0], [s].[Color], [s].[CreatedDate], [s].[Icon], [s].[IsActive], [s].[IsDefault], [s].[Name], [s].[Type], [s].[UserId]
+FROM (
+    SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+    FROM [Budgets] AS [b]
+    WHERE [b].[UserId] = @userId AND [b].[Month] = @month AND [b].[Year] = @year
+) AS [b1]
+LEFT JOIN (
+    SELECT [b0].[BudgetCategoryId], [b0].[Amount], [b0].[BudgetId], [b0].[CategoryId], [c].[CategoryId] AS [CategoryId0], [c].[Color], [c].[CreatedDate], [c].[Icon], [c].[IsActive], [c].[IsDefault], [c].[Name], [c].[Type], [c].[UserId]
+    FROM [BudgetCategories] AS [b0]
+    INNER JOIN [Categories] AS [c] ON [b0].[CategoryId] = [c].[CategoryId]
+) AS [s] ON [b1].[BudgetId] = [s].[BudgetId]
+ORDER BY [b1].[BudgetId], [s].[BudgetCategoryId]
+2026-09-08 21:49:44.331 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[CategoryId], COUNT(*) AS [Count]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+GROUP BY [t].[CategoryId]
+2026-09-08 21:49:44.342 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Name], [c].[Icon], [c].[Color], [c].[Type], [c].[IsDefault]
+FROM [Categories] AS [c]
+WHERE [c].[IsActive] = CAST(1 AS bit) AND ([c].[UserId] = @userId OR [c].[UserId] IS NULL)
+ORDER BY [c].[Type], [c].[Name]
+2026-09-08 21:49:44.356 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @monthEnd='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[CategoryId], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @monthEnd
+GROUP BY [t].[CategoryId]
+2026-09-08 21:49:44.357 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:44.373 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:44.377 +05:30 [INF] Executed ViewResult - view Index executed in 19.6392ms.
+2026-09-08 21:49:44.377 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.BudgetController.Index (MyDailyExpenseTracker) in 96.9807ms
+2026-09-08 21:49:44.377 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.BudgetController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:44.378 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Budget - 200 null text/html; charset=utf-8 99.3804ms
+2026-09-08 21:49:50.986 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/Categories - null null
+2026-09-08 21:49:50.988 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.CategoriesController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:50.988 +05:30 [INF] Route matched with {action = "Index", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.CategoriesController (MyDailyExpenseTracker).
+2026-09-08 21:49:51.016 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[CategoryId], COUNT(*) AS [Count]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+GROUP BY [t].[CategoryId]
+2026-09-08 21:49:51.032 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Name], [c].[Icon], [c].[Color], [c].[Type], [c].[IsDefault]
+FROM [Categories] AS [c]
+WHERE [c].[IsActive] = CAST(1 AS bit) AND ([c].[UserId] = @userId OR [c].[UserId] IS NULL)
+ORDER BY [c].[Type], [c].[Name]
+2026-09-08 21:49:51.034 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:51.049 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:51.054 +05:30 [INF] Executed ViewResult - view Index executed in 19.7834ms.
+2026-09-08 21:49:51.054 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.CategoriesController.Index (MyDailyExpenseTracker) in 65.901ms
+2026-09-08 21:49:51.054 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.CategoriesController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:51.054 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/Categories - 200 null text/html; charset=utf-8 67.7669ms
+2026-09-08 21:49:52.050 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5172/ - null null
+2026-09-08 21:49:52.053 +05:30 [INF] Executing endpoint 'MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:52.053 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyDailyExpenseTracker.Controllers.DashboardController (MyDailyExpenseTracker).
+2026-09-08 21:49:52.062 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@userId='?' (Size = 450), @today='?' (DbType = DateTime2), @today2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[RecurringExpenseId], [r].[Amount], [r].[CategoryId], [r].[CreatedDate], [r].[EndDate], [r].[Frequency], [r].[IsActive], [r].[LastGeneratedDate], [r].[Name], [r].[Notes], [r].[PaymentMethodId], [r].[StartDate], [r].[Type], [r].[UserId]
+FROM [RecurringExpenses] AS [r]
+WHERE [r].[UserId] = @userId AND [r].[IsActive] = CAST(1 AS bit) AND [r].[StartDate] <= @today AND ([r].[EndDate] IS NULL OR [r].[EndDate] >= @today2)
+2026-09-08 21:49:52.087 +05:30 [INF] Executed DbCommand (22ms) [Parameters=[@userId='?' (Size = 450), @today_Month='?' (DbType = Int32), @today_Year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b1].[BudgetId], [b1].[CreatedDate], [b1].[Month], [b1].[Notes], [b1].[TotalBudget], [b1].[UpdatedDate], [b1].[UserId], [b1].[Year], [s].[BudgetCategoryId], [s].[Amount], [s].[BudgetId], [s].[CategoryId], [s].[CategoryId0], [s].[Color], [s].[CreatedDate], [s].[Icon], [s].[IsActive], [s].[IsDefault], [s].[Name], [s].[Type], [s].[UserId]
+FROM (
+    SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+    FROM [Budgets] AS [b]
+    WHERE [b].[UserId] = @userId AND [b].[Month] = @today_Month AND [b].[Year] = @today_Year
+) AS [b1]
+LEFT JOIN (
+    SELECT [b0].[BudgetCategoryId], [b0].[Amount], [b0].[BudgetId], [b0].[CategoryId], [c].[CategoryId] AS [CategoryId0], [c].[Color], [c].[CreatedDate], [c].[Icon], [c].[IsActive], [c].[IsDefault], [c].[Name], [c].[Type], [c].[UserId]
+    FROM [BudgetCategories] AS [b0]
+    INNER JOIN [Categories] AS [c] ON [b0].[CategoryId] = [c].[CategoryId]
+) AS [s] ON [b1].[BudgetId] = [s].[BudgetId]
+ORDER BY [b1].[BudgetId], [s].[BudgetCategoryId]
+2026-09-08 21:49:52.104 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@userId='?' (Size = 450), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Type], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND CONVERT(date, [t].[TransactionDate]) = @today
+GROUP BY [t].[Type]
+2026-09-08 21:49:52.115 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Type], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+GROUP BY [t].[Type]
+2026-09-08 21:49:52.125 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Income'
+2026-09-08 21:49:52.134 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense'
+2026-09-08 21:49:52.140 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId
+2026-09-08 21:49:52.151 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@userId='?' (Size = 450), @prevStart='?' (DbType = DateTime2), @prevEnd='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @prevStart AND [t].[TransactionDate] <= @prevEnd
+2026-09-08 21:49:52.163 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p='?' (DbType = Int32), @userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[TransactionId], [t0].[TransactionDate], [t0].[Description], [c].[Name] AS [CategoryName], [c].[Icon] AS [CategoryIcon], [c].[Color] AS [CategoryColor], [t0].[Type], [t0].[Amount], [p].[Name] AS [PaymentMethodName]
+FROM (
+    SELECT TOP(@p) [t].[TransactionId], [t].[Amount], [t].[CategoryId], [t].[CreatedDate], [t].[Description], [t].[PaymentMethodId], [t].[TransactionDate], [t].[Type]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId
+    ORDER BY [t].[TransactionDate] DESC, [t].[CreatedDate] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[CategoryId]
+LEFT JOIN [PaymentMethods] AS [p] ON [t0].[PaymentMethodId] = [p].[PaymentMethodId]
+ORDER BY [t0].[TransactionDate] DESC, [t0].[CreatedDate] DESC
+2026-09-08 21:49:52.176 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@userId='?' (Size = 450), @sixMonthsAgo='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], DATEPART(year, [t].[TransactionDate]) AS [Year], DATEPART(month, [t].[TransactionDate]) AS [Month]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @sixMonthsAgo
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month]
+2026-09-08 21:49:52.187 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@userId='?' (Size = 450), @sixMonthsAgo='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], [t0].[Type], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], [t].[Type], DATEPART(year, [t].[TransactionDate]) AS [Year], DATEPART(month, [t].[TransactionDate]) AS [Month]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[TransactionDate] >= @sixMonthsAgo
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month], [t0].[Type]
+2026-09-08 21:49:52.201 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@p='?' (DbType = Int32), @userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@p) [c].[Name] AS [Category], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[CategoryId]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+GROUP BY [c].[Name]
+ORDER BY COALESCE(SUM([t].[Amount]), 0.0) DESC
+2026-09-08 21:49:52.209 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Key] AS [Day], COALESCE(SUM([t0].[Amount]), 0.0) AS [Total]
+FROM (
+    SELECT [t].[Amount], DATEPART(day, [t].[TransactionDate]) AS [Key]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today
+) AS [t0]
+GROUP BY [t0].[Key]
+2026-09-08 21:49:52.221 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@userId='?' (Size = 450), @monthStart='?' (DbType = DateTime2), @today='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Name] AS [Method], COALESCE(SUM([t].[Amount]), 0.0) AS [Total]
+FROM [Transactions] AS [t]
+LEFT JOIN [PaymentMethods] AS [p] ON [t].[PaymentMethodId] = [p].[PaymentMethodId]
+WHERE [t].[UserId] = @userId AND [t].[Type] = N'Expense' AND [t].[TransactionDate] >= @monthStart AND [t].[TransactionDate] <= @today AND [t].[PaymentMethodId] IS NOT NULL
+GROUP BY [p].[Name]
+2026-09-08 21:49:52.225 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@userId='?' (Size = 450), @today_Month='?' (DbType = Int32), @today_Year='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[BudgetId], [b].[CreatedDate], [b].[Month], [b].[Notes], [b].[TotalBudget], [b].[UpdatedDate], [b].[UserId], [b].[Year]
+FROM [Budgets] AS [b]
+WHERE [b].[UserId] = @userId AND [b].[Month] = @today_Month AND [b].[Year] = @today_Year
+2026-09-08 21:49:52.230 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@userId='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Notifications] AS [n]
+WHERE [n].[UserId] = @userId AND [n].[IsRead] = CAST(0 AS bit)
+2026-09-08 21:49:52.231 +05:30 [INF] Executing ViewResult, running view Index.
+2026-09-08 21:49:52.239 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[Currency], [a].[DateFormat], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Theme], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @p
+2026-09-08 21:49:52.240 +05:30 [INF] Executed ViewResult - view Index executed in 9.7082ms.
+2026-09-08 21:49:52.241 +05:30 [INF] Executed action MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker) in 187.5ms
+2026-09-08 21:49:52.241 +05:30 [INF] Executed endpoint 'MyDailyExpenseTracker.Controllers.DashboardController.Index (MyDailyExpenseTracker)'
+2026-09-08 21:49:52.241 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5172/ - 200 null text/html; charset=utf-8 190.6551ms
