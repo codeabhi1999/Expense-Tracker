@@ -48,6 +48,11 @@ namespace MyDailyExpenseTracker.ViewModels
 
         // ── Notifications ────────────────────────────────────────────────
         public int      UnreadNotificationCount  { get; set; }
+
+        // ── AI Intelligence ──────────────────────────────────────────────
+        public FinancialHealthScore HealthScore { get; set; } = new();
+        public BurnRateForecast     Forecast    { get; set; } = new();
+        public List<SpendingAnomaly> Anomalies  { get; set; } = new();
     }
 
     public class MonthlyIncomeExpense

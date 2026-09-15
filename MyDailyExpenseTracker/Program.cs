@@ -57,6 +57,7 @@ builder.Services.AddScoped<IReportService,        ReportService>();
 builder.Services.AddScoped<INotificationService,  NotificationService>();
 builder.Services.AddScoped<IRecurringExpenseService, RecurringExpenseService>();
 builder.Services.AddScoped<IDashboardService,     DashboardService>();
+builder.Services.AddScoped<IAiService,            AiService>();
 
 // ── MVC ───────────────────────────────────────────────────────────────────────
 builder.Services.AddControllersWithViews();
