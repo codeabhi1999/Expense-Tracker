@@ -803,11 +803,34 @@ namespace MyDailyExpenseTracker.Services
                     prevDict.TryGetValue(g.Key.CategoryId, out decimal prevTotal);
                     double growth = prevTotal > 0 ? (double)((currentTotal - prevTotal) / prevTotal) * 100 : 0;
 
+                    var icon = g.Key.Icon ?? "bi-tag";
+                    if (icon == "bi-cup-hot") icon = "bi-cup-hot-fill";
+                    else if (icon == "bi-house") icon = "bi-house-door-fill";
+                    else if (icon == "bi-heart-pulse") icon = "bi-heart-pulse-fill";
+                    else if (icon == "bi-bag") icon = "bi-bag-fill";
+                    else if (icon == "bi-fuel-pump") icon = "bi-fuel-pump-fill";
+                    else if (icon == "bi-three-dots") icon = "bi-grid-fill";
+                    else if (icon == "bi-basket") icon = "bi-basket-fill";
+                    else if (icon == "bi-bus-front") icon = "bi-bus-front-fill";
+                    else if (icon == "bi-wallet2") icon = "bi-wallet-fill";
+                    else if (icon == "bi-building") icon = "bi-building-fill";
+                    else if (icon == "bi-lightning") icon = "bi-lightning-charge-fill";
+                    else if (icon == "bi-phone") icon = "bi-phone-fill";
+                    else if (icon == "bi-book") icon = "bi-book-fill";
+                    else if (icon == "bi-camera-video") icon = "bi-film";
+                    else if (icon == "bi-credit-card") icon = "bi-credit-card-2-front-fill";
+                    else if (icon == "bi-shield-check") icon = "bi-shield-fill-check";
+
+                    var color = g.Key.Color ?? "#6366F1";
+                    // If color is a dull default, enhance vibrancy
+                    if (color == "#BDBDBD") color = "#94A3B8";
+                    if (color == "#FFEAA7") color = "#F59E0B";
+
                     return new CategorySpendingTrend
                     {
                         CategoryName = g.Key.Name,
-                        CategoryIcon = g.Key.Icon ?? "bi-tag",
-                        CategoryColor = g.Key.Color ?? "#6366F1",
+                        CategoryIcon = icon,
+                        CategoryColor = color,
                         CurrentMonthAmount = currentTotal,
                         PreviousMonthAmount = prevTotal,
                         GrowthPercentage = Math.Round(growth, 1)

@@ -16,6 +16,14 @@ namespace MyDailyExpenseTracker.ViewModels
         [Display(Name = "To Date")]
         public DateTime? ToDate { get; set; }
 
+        [Display(Name = "Month")]
+        [Range(1, 12)]
+        public int? Month { get; set; }
+
+        [Display(Name = "Year")]
+        [Range(2000, 2100)]
+        public int? Year { get; set; }
+
         [Display(Name = "Category")]
         public int? CategoryId { get; set; }
 

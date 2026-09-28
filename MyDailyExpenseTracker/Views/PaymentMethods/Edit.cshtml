@@ -1,3 +1,15 @@
 @model MyDailyExpenseTracker.ViewModels.PaymentMethodViewModel
-@{ ViewData["Title"] = "Edit Payment Method"; }
+@{ 
+    ViewData["Title"] = "Edit Payment Method"; 
+    ViewData["PageTitle"] = "Edit Payment Method"; 
+}
 @await Html.PartialAsync("Create", Model)
+
+@section Scripts {
+    <script>
+    document.getElementById('icon-input')?.addEventListener('input', function() {
+        const preview = document.getElementById('icon-preview')?.querySelector('i');
+        if (preview) preview.className = 'bi ' + this.value;
+    });
+    </script>
+}

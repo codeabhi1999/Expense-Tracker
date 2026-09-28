@@ -59,6 +59,12 @@ builder.Services.AddScoped<IRecurringExpenseService, RecurringExpenseService>();
 builder.Services.AddScoped<IDashboardService,     DashboardService>();
 builder.Services.AddScoped<IAiService,            AiService>();
 
+// ── Antiforgery ───────────────────────────────────────────────────────────────
+builder.Services.AddAntiforgery(options =>
+{
+    options.HeaderName = "RequestVerificationToken";
+});
+
 // ── MVC ───────────────────────────────────────────────────────────────────────
 builder.Services.AddControllersWithViews();
 

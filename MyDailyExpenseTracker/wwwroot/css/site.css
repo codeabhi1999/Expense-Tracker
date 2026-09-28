@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 /* ── CSS Custom Properties (Design Tokens) ───────────────────────────────── */
-:root {
+:root, [data-theme="light"] {
     --font-primary: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 
     /* Vibrant Core Colors */
@@ -114,6 +114,7 @@ body {
     z-index: -1;
     overflow: hidden;
     background: var(--bg-body);
+    pointer-events: none;
 }
 
 .mesh-blob {
@@ -122,6 +123,7 @@ body {
     border-radius: 50%;
     opacity: 0.5;
     animation: float 20s infinite ease-in-out;
+    pointer-events: none;
 }
 
 [data-theme="dark"] .mesh-blob { opacity: 0.2; }
@@ -295,6 +297,23 @@ body {
 
 .btn-icon:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); color: var(--text-primary); }
 
+#theme-icon, .theme-icon {
+    pointer-events: none;
+    font-size: 18px;
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+}
+
+.btn-icon:hover #theme-icon,
+.btn-icon:hover .theme-icon {
+    transform: rotate(25deg) scale(1.15);
+    color: #F59E0B;
+}
+
+[data-theme="dark"] .btn-icon:hover #theme-icon {
+    color: #FBBF24;
+}
+
 .notification-badge {
     position: absolute;
     top: -4px; right: -4px;
@@ -439,6 +458,171 @@ body {
 .stat-card.income   { --stat-color: var(--color-income); }
 .stat-card.balance  { --stat-color: var(--color-balance); }
 .stat-card.warning  { --stat-color: var(--color-warning); }
+
+/* ── Standalone Stat Icon Component ──────────────────────────────────────── */
+.stat-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.22);
+    color: var(--accent-primary);
+    box-shadow: 0 4px 14px -2px rgba(99, 102, 241, 0.2);
+    flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.stat-icon i { line-height: 1; }
+
+/* ── Category Icon Badge System (High-End Duotone / Luminous) ─────────────── */
+.category-icon-badge {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    position: relative;
+    flex-shrink: 0;
+    background: rgba(99, 102, 241, 0.14);
+    background: color-mix(in srgb, var(--cat-color, #6366F1) 16%, rgba(255, 255, 255, 0.65));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border: 1px solid color-mix(in srgb, var(--cat-color, #6366F1) 32%, transparent);
+    color: var(--cat-color, #6366F1);
+    box-shadow: 0 4px 14px -2px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 14px -2px color-mix(in srgb, var(--cat-color, #6366F1) 28%, transparent);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] .category-icon-badge {
+    background: color-mix(in srgb, var(--cat-color, #818CF8) 22%, rgba(22, 30, 49, 0.85));
+    border: 1px solid color-mix(in srgb, var(--cat-color, #818CF8) 42%, transparent);
+    color: color-mix(in srgb, var(--cat-color, #818CF8) 90%, #ffffff);
+    box-shadow: 0 6px 18px -2px color-mix(in srgb, var(--cat-color, #818CF8) 35%, transparent);
+}
+
+.category-icon-badge i {
+    filter: drop-shadow(0 2px 5px color-mix(in srgb, var(--cat-color, #6366F1) 45%, transparent));
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    line-height: 1;
+}
+
+.category-icon-badge:hover,
+.velocity-row:hover .category-icon-badge {
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 8px 22px -2px color-mix(in srgb, var(--cat-color, #6366F1) 48%, transparent);
+}
+
+.category-icon-badge:hover i,
+.velocity-row:hover .category-icon-badge i {
+    transform: scale(1.12);
+}
+
+.category-icon-badge.sm {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+.category-icon-badge.lg {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 16px;
+    font-size: 24px;
+}
+
+/* ── Section Header Icon Badge ───────────────────────────────────────────── */
+.header-icon-badge {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* ── Category Velocity Row Component ─────────────────────────────────────── */
+.velocity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+}
+
+.velocity-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.velocity-row:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-subtle);
+    transform: translateX(3px);
+    box-shadow: var(--shadow-sm);
+}
+
+.velocity-badge-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 20px;
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--accent-primary);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    letter-spacing: 0.03em;
+}
+
+[data-theme="dark"] .velocity-badge-new {
+    background: rgba(129, 140, 248, 0.15);
+    color: #A5B4FC;
+    border-color: rgba(129, 140, 248, 0.3);
+}
+
+.velocity-badge-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 9px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+}
+
+.velocity-badge-trend.up {
+    background: rgba(239, 68, 68, 0.12);
+    color: #FF4C6A;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.velocity-badge-trend.down {
+    background: rgba(34, 197, 94, 0.12);
+    color: #00E676;
+    border: 1px solid rgba(34, 197, 94, 0.25);
+}
 
 /* ── Tables ───────────────────────────────────────────────────────────────── */
 .table-wrapper {

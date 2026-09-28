@@ -107,11 +107,11 @@
                     {
                         <tr>
                             <td>
-                                <div class="d-flex align-items-center gap-2">
-                                    <div style="width:28px;height:28px;border-radius:6px;background:@(cb.CategoryColor ?? "#6366F1")22;display:flex;align-items:center;justify-content:center;color:@(cb.CategoryColor ?? "#6366F1")">
-                                        <i class="@(cb.CategoryIcon ?? "bi-tag")" style="font-size:13px"></i>
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="category-icon-badge sm" style="--cat-color: @(cb.CategoryColor ?? "#6366F1");">
+                                        <i class="@(cb.CategoryIcon ?? "bi-tag")"></i>
                                     </div>
-                                    <span class="fw-600">@cb.CategoryName</span>
+                                    <span class="fw-700">@cb.CategoryName</span>
                                 </div>
                             </td>
                             <td class="amount-expense fw-700">₹@cb.Amount.ToString("N2")</td>

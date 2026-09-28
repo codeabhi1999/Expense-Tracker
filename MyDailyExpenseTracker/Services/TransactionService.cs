@@ -40,6 +40,13 @@ namespace MyDailyExpenseTracker.Services
             // Apply filters
             if (filter.FromDate.HasValue)
                 query = query.Where(t => t.TransactionDate >= filter.FromDate.Value);
+            else if (filter.Month.HasValue && filter.Year.HasValue)
+            {
+                var monthStart = new DateTime(filter.Year.Value, filter.Month.Value, 1);
+                var monthEnd = monthStart.AddMonths(1).AddDays(-1);
+                query = query.Where(t => t.TransactionDate >= monthStart && t.TransactionDate <= monthEnd);
+            }
+
             if (filter.ToDate.HasValue)
                 query = query.Where(t => t.TransactionDate <= filter.ToDate.Value);
             if (filter.CategoryId.HasValue)

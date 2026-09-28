@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-md-6">
                             <label asp-for="Type" class="form-label">Type</label>
-                            <select asp-for="Type" class="form-select">
+                            <select asp-for="Type" class="form-select" id="re-type">
                                 <option value="Expense">Expense</option>
                                 <option value="Income">Income</option>
                             </select>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-md-6">
                             <label asp-for="CategoryId" class="form-label">Category</label>
-                            <select asp-for="CategoryId" class="form-select">
+                            <select asp-for="CategoryId" class="form-select" id="re-category">
                                 <option value="">Select Category</option>
                                 @foreach (var c in Model.Categories)
                                 {
@@ -106,3 +106,28 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+    document.getElementById('re-type')?.addEventListener('change', function () {
+        const type = this.value;
+        fetch('/Transactions/GetCategoriesByType?type=' + encodeURIComponent(type))
+            .then(r => r.json())
+            .then(data => {
+                const sel = document.getElementById('re-category');
+                if (!sel) return;
+                const cur = sel.value;
+                sel.innerHTML = '<option value="">Select Category</option>';
+                data.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c.value;
+                    opt.text = c.text;
+                    if (c.value === cur) opt.selected = true;
+                    sel.appendChild(opt);
+                });
+            })
+            .catch(err => console.error('Error fetching categories:', err));
+    });
+    </script>
+}
+

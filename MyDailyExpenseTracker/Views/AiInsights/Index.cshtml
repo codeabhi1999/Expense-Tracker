@@ -145,8 +145,8 @@
                     {
                         <div class="anomaly-card @anomaly.Severity">
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div class="d-flex align-items-center gap-2">
-                                    <div class="stat-icon" style="width:34px;height:34px;font-size:15px;">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="category-icon-badge sm" style="--cat-color: @(anomaly.Severity == "danger" ? "#EF4444" : "#F59E0B");">
                                         <i class="bi @anomaly.CategoryIcon"></i>
                                     </div>
                                     <div>
@@ -264,39 +264,47 @@
     <!-- Category Spending Velocity & Month-over-Month -->
     <div class="col-lg-5">
         <div class="card h-100">
-            <div class="card-header">
-                <h2 class="card-title d-flex align-items-center gap-2">
-                    <i class="bi bi-arrow-left-right text-info"></i> Category Velocity
-                </h2>
+            <div class="card-header d-flex align-items-center justify-content-between p-3 border-bottom border-subtle-custom">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="header-icon-badge" style="background: rgba(6, 182, 212, 0.14); color: #06B6D4; border: 1px solid rgba(6, 182, 212, 0.28);">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+                    <div>
+                        <h2 class="card-title m-0" style="font-size: 15px; font-weight: 700;">Category Velocity</h2>
+                        <small class="text-muted-custom" style="font-size: 11.5px;">Spending momentum vs last month</small>
+                    </div>
+                </div>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body p-2">
                 @if (Model.CategoryTrends.Any())
                 {
-                    <div class="list-group list-group-flush">
+                    <div class="velocity-list">
                         @foreach (var cat in Model.CategoryTrends)
                         {
-                            <div class="list-group-item d-flex align-items-center justify-content-between p-3"
-                                 style="background:transparent;border-color:var(--border-subtle);">
+                            <div class="velocity-row">
                                 <div class="d-flex align-items-center gap-3">
-                                    <div class="stat-icon" style="width:36px;height:36px;background:@(cat.CategoryColor)20;color:@cat.CategoryColor;font-size:16px;">
+                                    <div class="category-icon-badge" style="--cat-color: @cat.CategoryColor;">
                                         <i class="bi @cat.CategoryIcon"></i>
                                     </div>
                                     <div>
-                                        <strong class="text-primary-custom d-block" style="font-size:14px;">@cat.CategoryName</strong>
-                                        <small class="text-muted-custom">Last Month: ₹@FormatAmount(cat.PreviousMonthAmount)</small>
+                                        <strong class="text-primary-custom d-block" style="font-size:14px; font-weight: 700;">@cat.CategoryName</strong>
+                                        <small class="text-muted-custom" style="font-size:12px;">Last Month: ₹@FormatAmount(cat.PreviousMonthAmount)</small>
                                     </div>
                                 </div>
                                 <div class="text-end">
-                                    <strong class="text-primary-custom d-block">₹@FormatAmount(cat.CurrentMonthAmount)</strong>
+                                    <strong class="text-primary-custom d-block" style="font-size:14.5px; font-weight: 800;">₹@FormatAmount(cat.CurrentMonthAmount)</strong>
                                     @if (cat.PreviousMonthAmount > 0)
                                     {
-                                        <small class="@(cat.IsHigher ? "text-danger" : "text-success") fw-600">
-                                            @(cat.IsHigher ? "↑" : "↓") @Math.Abs(cat.GrowthPercentage)%
-                                        </small>
+                                        <span class="velocity-badge-trend @(cat.IsHigher ? "up" : "down")">
+                                            <i class="bi @(cat.IsHigher ? "bi-arrow-up-right" : "bi-arrow-down-right")"></i>
+                                            @(cat.IsHigher ? "+" : "-")@Math.Abs(cat.GrowthPercentage)%
+                                        </span>
                                     }
                                     else
                                     {
-                                        <small class="text-muted-custom">New</small>
+                                        <span class="velocity-badge-new">
+                                            <i class="bi bi-sparkle"></i> New
+                                        </span>
                                     }
                                 </div>
                             </div>
@@ -332,7 +340,7 @@
                             <div class="p-3 rounded-3 h-100 border border-subtle-custom d-flex flex-column justify-content-between" style="background:var(--bg-card-hover);">
                                 <div>
                                     <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <div class="stat-icon" style="width:36px;height:36px;font-size:16px;">
+                                        <div class="category-icon-badge sm" style="--cat-color: #8B5CF6;">
                                             <i class="bi @sug.Icon"></i>
                                         </div>
                                         <span class="badge" style="background:rgba(99,102,241,0.15);color:var(--accent-primary);font-size:11px;">

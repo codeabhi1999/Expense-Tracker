@@ -3,5 +3,40 @@
     ViewData["Title"]     = "Edit Transaction";
     ViewData["PageTitle"] = "Edit Transaction";
 }
-@* Reuse the Create view — same form works for both Create and Edit *@
 @await Html.PartialAsync("Create", Model)
+
+@section Scripts {
+    <script>
+    function setType(type) {
+        const typeHidden = document.getElementById('TypeHidden');
+        if (typeHidden) typeHidden.value = type;
+        const btnExp = document.getElementById('btn-expense');
+        const btnInc = document.getElementById('btn-income');
+
+        if (type === 'Expense') {
+            if (btnExp) btnExp.className = 'btn flex-grow-1 py-2 fw-600 btn-expense';
+            if (btnInc) btnInc.className = 'btn flex-grow-1 py-2 fw-600 btn-outline-secondary';
+        } else {
+            if (btnInc) btnInc.className = 'btn flex-grow-1 py-2 fw-600 btn-income';
+            if (btnExp) btnExp.className = 'btn flex-grow-1 py-2 fw-600 btn-outline-secondary';
+        }
+
+        fetch('/Transactions/GetCategoriesByType?type=' + encodeURIComponent(type))
+            .then(r => r.json())
+            .then(data => {
+                const sel = document.getElementById('CategoryId');
+                if (!sel) return;
+                const cur = sel.value;
+                sel.innerHTML = '<option value="">Select Category</option>';
+                data.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c.value;
+                    opt.text = c.text;
+                    if (c.value === cur) opt.selected = true;
+                    sel.appendChild(opt);
+                });
+            })
+            .catch(err => console.error('Error updating categories:', err));
+    }
+    </script>
+}

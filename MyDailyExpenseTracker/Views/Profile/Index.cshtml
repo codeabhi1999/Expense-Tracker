@@ -90,7 +90,7 @@
         <div class="card mb-4">
             <div class="card-body text-center py-4">
                 <div style="width:80px;height:80px;border-radius:50%;background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:32px;font-weight:800;margin:0 auto 16px">
-                    @((Model.FirstName.FirstOrDefault().ToString() + Model.LastName.FirstOrDefault().ToString()).ToUpper())
+                    @(((Model.FirstName?.FirstOrDefault() ?? ' ').ToString() + (Model.LastName?.FirstOrDefault() ?? ' ').ToString()).Trim().ToUpper())
                 </div>
                 <h3 class="fw-800" style="font-size:20px">@Model.FullName</h3>
                 <p style="color:var(--text-muted);font-size:13px">@Model.Email</p>
