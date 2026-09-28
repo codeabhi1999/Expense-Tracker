@@ -336,6 +336,16 @@
                 toggleTheme();
             }
         });
+
+        // Global shortcut Ctrl+K / Cmd+K to open AI Assistant
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                if (typeof window.openAiChat === 'function') {
+                    window.openAiChat();
+                }
+            }
+        });
     });
 
     window.MDET = { getAntiForgeryToken, escapeHtml, applyTheme, toggleTheme, initChartDefaults };

@@ -122,37 +122,51 @@
 {
     <div class="row g-3 mb-4">
         <div class="col-md-4">
-            <div class="card p-3 d-flex flex-row align-items-center gap-3">
-                <div style="width:42px;height:42px;border-radius:10px;background:rgba(239,68,68,.1);display:flex;align-items:center;justify-content:center;color:var(--color-expense);font-size:20px">
-                    <i class="bi bi-arrow-down-circle-fill"></i>
-                </div>
-                <div>
-                    <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Total Expense</div>
-                    <div class="fw-800 amount-expense" style="font-size:18px">₹@Model.FilteredTotalExpense.ToString("N2")</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card p-3 d-flex flex-row align-items-center gap-3">
-                <div style="width:42px;height:42px;border-radius:10px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;color:var(--color-income);font-size:20px">
-                    <i class="bi bi-arrow-up-circle-fill"></i>
-                </div>
-                <div>
-                    <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Total Income</div>
-                    <div class="fw-800 amount-income" style="font-size:18px">₹@Model.FilteredTotalIncome.ToString("N2")</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card p-3 d-flex flex-row align-items-center gap-3">
-                <div style="width:42px;height:42px;border-radius:10px;background:rgba(59,130,246,.1);display:flex;align-items:center;justify-content:center;color:var(--color-balance);font-size:20px">
-                    <i class="bi bi-wallet2"></i>
-                </div>
-                <div>
-                    <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Net Balance</div>
-                    <div class="fw-800 @(Model.FilteredBalance >= 0 ? "amount-income" : "amount-expense")" style="font-size:18px">
-                        ₹@Math.Abs(Model.FilteredBalance).ToString("N2")
+            <div class="fintech-kpi-card">
+                <div class="fintech-kpi-top">
+                    <span class="fintech-kpi-label">Filtered Expense</span>
+                    <div class="fintech-kpi-icon" style="background:rgba(244,63,94,0.12);color:#F43F5E;">
+                        <i class="bi bi-arrow-down-circle-fill"></i>
                     </div>
+                </div>
+                <div class="fintech-kpi-value text-expense">
+                    ₹@Model.FilteredTotalExpense.ToString("N2")
+                </div>
+                <div class="fintech-kpi-footer">
+                    <i class="bi bi-funnel"></i> In filtered result set
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="fintech-kpi-card">
+                <div class="fintech-kpi-top">
+                    <span class="fintech-kpi-label">Filtered Income</span>
+                    <div class="fintech-kpi-icon" style="background:rgba(16,185,129,0.12);color:#10B981;">
+                        <i class="bi bi-arrow-up-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="fintech-kpi-value text-income">
+                    ₹@Model.FilteredTotalIncome.ToString("N2")
+                </div>
+                <div class="fintech-kpi-footer">
+                    <i class="bi bi-funnel"></i> In filtered result set
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="fintech-kpi-card">
+                <div class="fintech-kpi-top">
+                    <span class="fintech-kpi-label">Net Balance</span>
+                    <div class="fintech-kpi-icon" style="background:rgba(99,102,241,0.12);color:var(--accent-primary);">
+                        <i class="bi bi-wallet2"></i>
+                    </div>
+                </div>
+                <div class="fintech-kpi-value @(Model.FilteredBalance >= 0 ? "text-income" : "text-expense")">
+                    ₹@Math.Abs(Model.FilteredBalance).ToString("N2")
+                </div>
+                <div class="fintech-kpi-footer">
+                    <i class="bi @(Model.FilteredBalance >= 0 ? "bi-shield-check text-success" : "bi-exclamation-triangle text-danger")"></i>
+                    @(Model.FilteredBalance >= 0 ? "Positive Surplus" : "Deficit Warning")
                 </div>
             </div>
         </div>
@@ -201,18 +215,17 @@
                         @foreach (var tx in Model.Transactions)
                         {
                             <tr>
-                                <td class="no-wrap">@tx.TransactionDate.ToString("dd MMM yyyy")</td>
+                                <td class="no-wrap" style="font-size:13px;color:var(--text-secondary)">@tx.TransactionDate.ToString("dd MMM yyyy")</td>
                                 <td>
-                                    <div class="fw-500">@tx.Description</div>
+                                    <div class="fw-700 text-primary-custom">@tx.Description</div>
                                 </td>
                                 <td>
-                                    <span class="category-pill">
-                                        @if (!string.IsNullOrEmpty(tx.CategoryIcon))
-                                        {
-                                            <i class="@tx.CategoryIcon" style="color:@tx.CategoryColor"></i>
-                                        }
-                                        @tx.CategoryName
-                                    </span>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="category-icon-badge" style="width:34px;height:34px;min-width:34px;font-size:15px;border-radius:10px;--cat-color:@(string.IsNullOrEmpty(tx.CategoryColor) ? "#6366F1" : tx.CategoryColor);">
+                                            <i class="@(string.IsNullOrEmpty(tx.CategoryIcon) ? "bi bi-tag-fill" : tx.CategoryIcon)"></i>
+                                        </div>
+                                        <span class="fw-600">@tx.CategoryName</span>
+                                    </div>
                                 </td>
                                 <td>
                                     <span class="type-badge @tx.Type.ToLower()">
@@ -220,25 +233,35 @@
                                         @tx.Type
                                     </span>
                                 </td>
-                                <td class="@(tx.Type == "Expense" ? "amount-expense" : "amount-income") no-wrap">
+                                <td class="@(tx.Type == "Expense" ? "amount-expense" : "amount-income") fw-800 no-wrap" style="font-size:15px;font-variant-numeric:tabular-nums;">
                                     @(tx.Type == "Expense" ? "−" : "+")₹@tx.Amount.ToString("N2")
                                 </td>
-                                <td class="text-muted-custom">@(tx.PaymentMethodName ?? "—")</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(tx.PaymentMethodName))
+                                    {
+                                        <span class="fintech-tag-pill">
+                                            <i class="bi bi-credit-card"></i> @tx.PaymentMethodName
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">—</span>
+                                    }
+                                </td>
                                 <td>
                                     <div class="d-flex gap-1">
                                         <a href="@Url.Action("Details", new { id=tx.TransactionId })"
-                                           class="btn btn-sm" style="background:rgba(99,102,241,.1);color:var(--accent-primary);border:none;" title="View">
-                                            <i class="bi bi-eye"></i>
+                                           class="fintech-mini-btn" style="background:rgba(99,102,241,.12);color:var(--accent-primary);" title="View">
+                                            <i class="bi bi-eye-fill"></i>
                                         </a>
                                         <a href="@Url.Action("Edit", new { id=tx.TransactionId })"
-                                           class="btn btn-sm" style="background:rgba(59,130,246,.1);color:#3B82F6;border:none;" title="Edit">
-                                            <i class="bi bi-pencil"></i>
+                                           class="fintech-mini-btn edit" title="Edit">
+                                            <i class="bi bi-pencil-fill"></i>
                                         </a>
-                                        <button type="button" class="btn btn-sm"
-                                                style="background:rgba(239,68,68,.1);color:#EF4444;border:none;" title="Delete"
+                                        <button type="button" class="fintech-mini-btn delete" title="Delete"
                                                 data-delete-form="del-@tx.TransactionId"
                                                 data-delete-label="@tx.Description">
-                                            <i class="bi bi-trash"></i>
+                                            <i class="bi bi-trash-fill"></i>
                                         </button>
                                         <form id="del-@tx.TransactionId" method="post"
                                               asp-action="Delete" asp-route-id="@tx.TransactionId">
